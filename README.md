@@ -29,6 +29,11 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 * Function to connect with compatible matches (1:1 chat?)
 * Post experience survey to allow feedback on what could be improved
 
+## Additions 
+### If MVP is produced:
+* Allowing other school into our app or the greater nyc area
+*  More in depth roommate questionaire which allows user to write in preferences
+
 
 ## Design
 Each of the main requirements will correspond to an API endpoint.
