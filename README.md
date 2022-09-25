@@ -27,6 +27,7 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 * Personalized roommate recommendations based on preference quiz
 * Simple profile page for users
 * Function to connect with compatible matches (1:1 chat?)
+* Post experience survey to allow feedback on what could be improved
 
 
 ## Design
