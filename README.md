@@ -29,10 +29,18 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 * Function to connect with compatible matches (1:1 chat?)
 * Post experience survey to allow feedback on what could be improved
 
+## Basic Survey
+* What time do you usually go to bed?
+* How often do you have guests over?
+* Are you alright with sharing basic apartment supplies? (toiletries, cleaning supplies, kitchen supplies, etc)
+* Are you often at your dorm during the day?
+* Do you often clean?
+
 ## Additions 
 ### If MVP is produced:
 * Allowing other school into our app or the greater nyc area
 *  More in depth roommate questionaire which allows user to write in preferences
+*  More detailed user profiles
 
 
 ## Design
