@@ -13,12 +13,13 @@ api = Api(app)
 LIST = 'list'
 HELLO = '/hello'
 MESSAGE = 'message'
-CHAR_TYPE_LIST = f'/character_types/{LIST}'
-CHAR_TYPE_LIST_NM = 'character_types_list'
 
-A_CHAR_TYPE = 'Wizard'
-ANOTHER_CHAR_TYPE = 'Warrior'
-
+USER_GRADES = f'/User_grades/{LIST}'
+USER_GRADES_NM = 'user_grades_list'
+freshman = 'freshman'
+sophomore = 'sophmore'
+junior = 'junior'
+senior = 'senior'
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -34,17 +35,17 @@ class HelloWorld(Resource):
         return {MESSAGE: 'hello world'}
 
 
-@api.route(CHAR_TYPE_LIST)
-class CharacterTypeList(Resource):
+
+@api.route(USER_GRADES)
+class User_Grades(Resource):
     """
-    This will get a list of character types.
+    This will get a list of user grades
     """
     def get(self):
         """
-        Returns a list of character types.
+        Returns a list of possible grades.
         """
-        return {CHAR_TYPE_LIST_NM: [A_CHAR_TYPE, ANOTHER_CHAR_TYPE]}
-
+        return {USER_GRADES_NM: [freshman, sophomore, junior, senior]}
 
 @api.route('/endpoints')
 class Endpoints(Resource):
