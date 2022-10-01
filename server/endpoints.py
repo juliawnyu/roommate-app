@@ -21,6 +21,7 @@ sophomore = 'sophmore'
 junior = 'junior'
 senior = 'senior'
 
+
 @api.route(HELLO)
 class HelloWorld(Resource):
     """
@@ -35,9 +36,8 @@ class HelloWorld(Resource):
         return {MESSAGE: 'hello world'}
 
 
-
 @api.route(USER_GRADES)
-class User_Grades(Resource):
+class UserGrades(Resource):
     """
     This will get a list of user grades
     """
@@ -46,6 +46,7 @@ class User_Grades(Resource):
         Returns a list of possible grades.
         """
         return {USER_GRADES_NM: [freshman, sophomore, junior, senior]}
+
 
 @api.route('/endpoints')
 class Endpoints(Resource):
