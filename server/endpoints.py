@@ -7,10 +7,12 @@ from flask import Flask, Blueprint, render_template
 from flask_restx import Resource, Api
 # import db.db as db
 
+
 app = Flask(__name__)
-blueprint = Blueprint('api', __name__, url_prefix='/api')
-api = Api(blueprint, doc='/doc/')
-app.register_blueprint(blueprint)
+
+API_PATH = '/api'
+DOC_PATH = '/api/doc'
+api = Api(app, prefix=API_PATH, doc=DOC_PATH)
 
 LIST = 'list'
 HELLO = '/hello'
