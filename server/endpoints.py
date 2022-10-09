@@ -117,32 +117,32 @@ def login():
     """
     The login page for our app.
     """
-    username = request.form['username']
-    password = request.form['password'] #might have to hash this passoword###############
+    # username = request.form['username']
+    # password = request.form['password'] #might have to hash this passoword###############
 	
 
-	#cursor used to send queries
-    with conn.cursor() as cursor:
-	#cursor = conn.cursor()
-	#executes query
-        query = 'SELECT * FROM users WHERE user = %s and password = %s'
-        cursor.execute(query, (username, password))
-        #stores the results in a variable
-        data = cursor.fetchone()
-	#use fetchall() if you are expecting more than 1 data row
+	# #cursor used to send queries
+    # with conn.cursor() as cursor:
+	# #cursor = conn.cursor()
+	# #executes query
+    #     query = 'SELECT * FROM users WHERE user = %s and password = %s'
+    #     cursor.execute(query, (username, password))
+    #     #stores the results in a variable
+    #     data = cursor.fetchone()
+	# #use fetchall() if you are expecting more than 1 data row
 
-    error = None
-    if(data):
-		#creates a session for the the user
-		#session is a built in
-        session['username'] = username
-        session['type'] = 'Users' 
-        return render_template('home.html')
+    # error = None
+    # if(data):
+	# 	#creates a session for the the user
+	# 	#session is a built in
+    #     session['username'] = username
+    #     session['type'] = 'Users' 
+    #     return render_template('home.html')
 		
-    else:
-		#returns an error message to the html page
-        error = 'Invalid login or username'
-        return render_template('login.html', error=error)
+    # else:
+	# 	#returns an error message to the html page
+    #     error = 'Invalid login or username'
+    #     return render_template('login.html', error=error)
         
     return render_template('login.html')
 
