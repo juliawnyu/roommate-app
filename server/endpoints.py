@@ -112,9 +112,12 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/login')
+@app.route('/login',methods=['GET', 'POST'])
 def login():
     """
     The login page for our app.
     """
+     
     return render_template('login.html')
+
+
