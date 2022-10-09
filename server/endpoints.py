@@ -117,8 +117,4 @@ def login():
     """
     The login page for our app.
     """
-        
     return render_template('login.html')
-
-
-
