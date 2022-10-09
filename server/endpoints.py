@@ -43,7 +43,7 @@ class HelloWorld(Resource):
 @api.route(USER_GRADES)
 class UserGrades(Resource):
     """
-    This will get a list of user grades
+    This will get a list of user grades.
     """
     def get(self):
         """
@@ -69,9 +69,15 @@ class Endpoints(Resource):
 
 @app.route('/')
 def home():
+    """
+    The landing page for our app.
+    """
     return render_template('home.html')
 
 
 @app.route('/login')
 def login():
+    """
+    The login page for our app.
+    """
     return render_template('login.html')

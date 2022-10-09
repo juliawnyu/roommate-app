@@ -33,6 +33,13 @@ def test_get_user_grade_list_not_empty():
     resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_GRADES).get_json()
     assert len(resp_json[ep.USER_GRADES_NM]) > 0
 
+
 def test_home():
     response = TEST_CLIENT.get("/")
     assert b"Welcome to Roommate Finder!" in response.data
+    assert response.status == "200 OK"
+
+
+def test_login():
+    response = TEST_CLIENT.get("/login")
+    assert response.status == "200 OK"
