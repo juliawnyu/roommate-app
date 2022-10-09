@@ -123,9 +123,10 @@ def login():
 #When mock data base made, way we will direct user to home page
 @app.route('/home')
 def home_page():
-    username = session['username']
-    cursor = conn.cursor();
-    query = 'SELECT name FROM customer WHERE email = %s'
-    cursor.execute(query, (username))
-    name = cursor.fetchone()
-    return render_template('home.html', name=name['name'])
+    #username = session['username']
+    #cursor = conn.cursor();
+    #query = 'SELECT name FROM customer WHERE email = %s'
+    #cursor.execute(query, (username))
+    #name = cursor.fetchone()
+    #return render_template('home.html', name=name['name'])
+    return render_template('home.html')
