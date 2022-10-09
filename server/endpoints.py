@@ -25,6 +25,13 @@ sophomore = 'sophomore'
 junior = 'junior'
 senior = 'senior'
 
+USER_COMMON_BEDTIMES = f'/User_common_bedtimes/{LIST}'
+USER_COMMON_BEDTIMES_NM = 'user_common_bedtimes_list'
+early = '7-9pm'
+late = '10-12'
+very_late = '1+'
+
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -50,6 +57,18 @@ class UserGrades(Resource):
         Returns a list of possible grades.
         """
         return {USER_GRADES_NM: [freshman, sophomore, junior, senior]}
+
+
+@api.route(USER_COMMON_BEDTIMES)
+class UserCommonBedtimes(Resource):
+    """
+    This will get a list of common user bedtimes.
+    """
+    def get(self):
+        """
+        Returns list of possible bedtimes.
+        """
+        return {USER_COMMON_BEDTIMES_NM: [early, late, very_late]}
 
 
 @api.route('/endpoints')
