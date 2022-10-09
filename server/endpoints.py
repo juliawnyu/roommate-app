@@ -85,7 +85,8 @@ class UserGuestPreferences(Resource):
         """
         Returns list of possible guest preferences.
         """
-        return {USER_GUEST_PREFERENCES_NM: [no_guests, few_guests, lots_of_guests]}
+        return {USER_GUEST_PREFERENCES_NM:
+                [no_guests, few_guests, lots_of_guests]}
 
 
 @api.route('/endpoints')
