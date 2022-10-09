@@ -31,6 +31,11 @@ early = '7-9pm'
 late = '10-12'
 very_late = '1+'
 
+USER_GUEST_PREFERENCES = f'/User_guest_preferences/{LIST}'
+USER_GUEST_PREFERENCES_NM = 'user_guest_preferences_list'
+no_guests = 'no guests'
+few_guests = 'a few guests'
+lots_of_guests = 'any amount of guests'
 
 
 @api.route(HELLO)
@@ -69,6 +74,18 @@ class UserCommonBedtimes(Resource):
         Returns list of possible bedtimes.
         """
         return {USER_COMMON_BEDTIMES_NM: [early, late, very_late]}
+
+
+@api.route(USER_GUEST_PREFERENCES)
+class UserGuestPreferences(Resource):
+    """
+    This will get a list of user guest preferences.
+    """
+    def get(self):
+        """
+        Returns list of possible guest preferences.
+        """
+        return {USER_GUEST_PREFERENCES_NM: [no_guests, few_guests, lots_of_guests]}
 
 
 @api.route('/endpoints')

@@ -34,7 +34,7 @@ def test_get_user_grade_list_not_empty():
     assert len(resp_json[ep.USER_GRADES_NM]) > 0
 
 
-def test_get_common_bedtimes():
+def test_get_user_common_bedtimes():
     """
     See if we can get a user grade type list properly.
     Return should look like:
@@ -44,7 +44,7 @@ def test_get_common_bedtimes():
     assert isinstance(resp_json[ep.USER_COMMON_BEDTIMES_NM], list)
 
 
-def test_get_common_bedtimes_list_not_empty():
+def test_get_user_common_bedtimes_list_not_empty():
     """
     See if we can get common bedtimes list not empty.
     Return should look like:
@@ -52,6 +52,26 @@ def test_get_common_bedtimes_list_not_empty():
     """
     resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_COMMON_BEDTIMES).get_json()
     assert len(resp_json[ep.USER_COMMON_BEDTIMES_NM]) > 0
+
+
+def test_get_user_guest_preferences():
+    """
+    See if we can get user guest preferences list properly.
+    Return should look like:
+        {USER_GUEST_PREFERENCES_NW: [list of guest prefs...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_GUEST_PREFERENCES).get_json()
+    assert isinstance(resp_json[ep.USER_GUEST_PREFERENCES_NM], list)
+
+
+def test_get_user_guest_preferences_not_emtpy():
+    """
+    See if we can get user guest preferences list not empty.
+    Return should look like:
+        {USER_GUEST_PREFERENCES_NW: [list of guest prefs...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_GUEST_PREFERENCES).get_json()
+    assert len(resp_json[ep.USER_GUEST_PREFERENCES_NM]) > 0
 
 
 def test_home():
