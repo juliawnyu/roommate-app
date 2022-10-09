@@ -43,5 +43,6 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 *  More detailed user profiles
 
 
+
 ## Design
 Each of the main requirements will correspond to an API endpoint.
