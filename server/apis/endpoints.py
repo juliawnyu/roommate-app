@@ -3,16 +3,10 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 
-from flask import Flask, render_template
-from flask_restx import Resource, Api
-# import db.db as db
+from flask_restx import Resource, Api, Namespace
 
-
-app = Flask(__name__)
-
-API_PATH = '/api'
-DOC_PATH = '/api/doc/'
-api = Api(app, prefix=API_PATH, doc=DOC_PATH)
+#name sets the api path to 127.0.0.1/api
+api = Namespace(name='api')
 
 LIST = 'list'
 HELLO = '/hello'
@@ -24,6 +18,7 @@ freshman = 'freshman'
 sophomore = 'sophomore'
 junior = 'junior'
 senior = 'senior'
+
 
 
 @api.route(HELLO)
@@ -66,12 +61,3 @@ class Endpoints(Resource):
         # sorted(rule.rule for rule in api.app.url_map.iter_rules())
         return {"Available endpoints": endpoints}
 
-
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
