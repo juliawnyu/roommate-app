@@ -121,11 +121,6 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/clark_info')
-def clark_info():
-    """
-    The page where students can come to find info/pictures of clark hall.
-    """    
-    return render_template('clark.html')
+
 
 
