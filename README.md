@@ -40,7 +40,7 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 ### If MVP is produced:
 * Allowing other school into our app or the greater nyc area
 * More in depth roommate questionaire which allows user to write in preferences
-* More detailed user profiles
+*  More detailed user profiles
 
 
 
