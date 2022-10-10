@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    <a href = "/loginSenior"><button>Senior Login</option></a>
+    <a href = "/loginJunior"><button>Junior Login</option></a>
+    <a href = "/loginSophomore"><button>Sophomore Login</option></a>
+    <a href = "/loginFreshman"><button>Freshman Login</option></a>
+
+</body>
+</html>

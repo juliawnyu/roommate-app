@@ -7,8 +7,12 @@ from flask import Flask, render_template
 from flask_restx import Resource, Api
 # import db.db as db
 
+
 app = Flask(__name__)
-api = Api(app)
+
+API_PATH = '/api'
+DOC_PATH = '/api/doc/'
+api = Api(app, prefix=API_PATH, doc=DOC_PATH)
 
 LIST = 'list'
 HELLO = '/hello'
@@ -20,6 +24,18 @@ freshman = 'freshman'
 sophomore = 'sophomore'
 junior = 'junior'
 senior = 'senior'
+
+USER_COMMON_BEDTIMES = f'/User_common_bedtimes/{LIST}'
+USER_COMMON_BEDTIMES_NM = 'user_common_bedtimes_list'
+early = '7-9pm'
+late = '10-12'
+very_late = '1+'
+
+USER_GUEST_PREFERENCES = f'/User_guest_preferences/{LIST}'
+USER_GUEST_PREFERENCES_NM = 'user_guest_preferences_list'
+no_guests = 'no guests'
+few_guests = 'a few guests'
+lots_of_guests = 'any amount of guests'
 
 
 @api.route(HELLO)
@@ -39,13 +55,38 @@ class HelloWorld(Resource):
 @api.route(USER_GRADES)
 class UserGrades(Resource):
     """
-    This will get a list of user grades
+    This will get a list of user grades.
     """
     def get(self):
         """
         Returns a list of possible grades.
         """
         return {USER_GRADES_NM: [freshman, sophomore, junior, senior]}
+
+
+@api.route(USER_COMMON_BEDTIMES)
+class UserCommonBedtimes(Resource):
+    """
+    This will get a list of common user bedtimes.
+    """
+    def get(self):
+        """
+        Returns list of possible bedtimes.
+        """
+        return {USER_COMMON_BEDTIMES_NM: [early, late, very_late]}
+
+
+@api.route(USER_GUEST_PREFERENCES)
+class UserGuestPreferences(Resource):
+    """
+    This will get a list of user guest preferences.
+    """
+    def get(self):
+        """
+        Returns list of possible guest preferences.
+        """
+        return {USER_GUEST_PREFERENCES_NM:
+                [no_guests, few_guests, lots_of_guests]}
 
 
 @api.route('/endpoints')
@@ -63,6 +104,17 @@ class Endpoints(Resource):
         return {"Available endpoints": endpoints}
 
 
-@app.route('/home')
+@app.route('/')
 def home():
+    """
+    The landing page for our app.
+    """
     return render_template('home.html')
+
+
+@app.route('/login')
+def login():
+    """
+    The login page for our app.
+    """
+    return render_template('login.html')

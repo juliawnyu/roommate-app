@@ -39,8 +39,13 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 ## Additions 
 ### If MVP is produced:
 * Allowing other school into our app or the greater nyc area
-*  More in depth roommate questionaire which allows user to write in preferences
+* More in depth roommate questionaire which allows user to write in preferences
 *  More detailed user profiles
+
+## Optional Feature
+* Tabs for each NYU dorm with mini descriptions and pcitures of rooms
+* Virtual/video tours (not sure how difficult this is, could prob at least get videos of Clark and Othmer)
+
 
 
 ## Design
