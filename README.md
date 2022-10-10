@@ -42,6 +42,9 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 * More in depth roommate questionaire which allows user to write in preferences
 *  More detailed user profiles
 
+## Optional Feature
+* Tabs for each NYU dorm with mini descriptions and pcitures of rooms
+
 
 
 ## Design
