@@ -44,6 +44,7 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 
 ## Optional Feature
 * Tabs for each NYU dorm with mini descriptions and pcitures of rooms
+* Virtual/video tours (not sure how difficult this is, could prob at least get videos of Clark and Othmer)
 
 
 
