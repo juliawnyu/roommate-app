@@ -118,3 +118,11 @@ def login():
     The login page for our app.
     """
     return render_template('login.html')
+
+
+@app.route('/clark')
+def clark_info():
+    """
+    The Clark info  page for our app.
+    """
+    return render_template('clark.html')
