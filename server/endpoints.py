@@ -120,6 +120,14 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/quiz')
+def quiz():
+    """
+    app route for the roommate quiz we use for matching
+    """
+    return render_template('quiz.html')
+
+
 @app.route('/clark')
 def clark_info():
     """
