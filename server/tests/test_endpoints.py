@@ -74,6 +74,26 @@ def test_get_user_guest_preferences_not_emtpy():
     assert len(resp_json[ep.USER_GUEST_PREFERENCES_NM]) > 0
 
 
+def test_get_user_cleaning_preferences():
+    """
+    See if we can get user cleaning preferences list properly.
+    Return should look like:
+        {USER_CLEANING_PREFERENCES_NW: [list of cleaning prefs...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_CLEANING_PREFERENCES).get_json()
+    assert isinstance(resp_json[ep.USER_CLEANING_PREFERENCES_NM], list)
+
+
+def test_get_user_cleaning_preferences_not_emtpy():
+    """
+    See if we can get user cleaning preferences list not empty.
+    Return should look like:
+        {USER_CLEANING_PREFERENCES_NW: [list of cleaning prefs...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_CLEANING_PREFERENCES).get_json()
+    assert len(resp_json[ep.USER_CLEANING_PREFERENCES_NM]) > 0
+
+
 def test_home():
     response = TEST_CLIENT.get("/")
     assert b"Welcome to Roommate Finder!" in response.data
