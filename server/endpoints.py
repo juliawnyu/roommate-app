@@ -37,6 +37,12 @@ no_guests = 'no guests'
 few_guests = 'a few guests'
 lots_of_guests = 'any amount of guests'
 
+USER_CLEANING_PREFERENCES = f'/User_cleaning_preferences/{LIST}'
+USER_CLEANING_PREFERENCES_NM = 'user_cleaning_preferences_list'
+clean_tidy = 'clean and tidy'
+clean_messy = 'clean but messy'
+messy = 'messy'
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -87,6 +93,19 @@ class UserGuestPreferences(Resource):
         """
         return {USER_GUEST_PREFERENCES_NM:
                 [no_guests, few_guests, lots_of_guests]}
+
+
+@api.route(USER_CLEANING_PREFERENCES)
+class UserCleaningPreferences(Resource):
+    """
+    This will get a list of user cleaning preferences.
+    """
+    def get(self):
+        """
+        Returns list of possible cleaning preferences.
+        """
+        return {USER_CLEANING_PREFERENCES_NM:
+                [clean_tidy, clean_messy, messy]}
 
 
 @api.route('/endpoints')
