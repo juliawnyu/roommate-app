@@ -139,6 +139,14 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    """
+    The register page for new users to our app.
+    """
+    return render_template('register.html')
+
+
 @app.route('/quiz')
 def quiz():
     """
