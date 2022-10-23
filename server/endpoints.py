@@ -43,6 +43,11 @@ clean_tidy = 'clean and tidy'
 clean_messy = 'clean but messy'
 messy = 'messy'
 
+USER_SHARING_PREFERENCES = f'/User_sharing_preferences/{LIST}'
+USER_SHARING_PREFERENCES_NM = 'user_sharing_preferences_list'
+sharing = 'willing to share items'
+no_sharing = 'not willing to share items'
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -106,6 +111,17 @@ class UserCleaningPreferences(Resource):
         """
         return {USER_CLEANING_PREFERENCES_NM:
                 [clean_tidy, clean_messy, messy]}
+
+
+@api.route(USER_SHARING_PREFERENCES)
+class UserSharingPreferences(Resource):
+    """
+    This will get a list of user sharing preferences.
+    """
+    def get(self):
+        """
+        Returns list of the two possible user sharing preferences."""
+        return {USER_SHARING_PREFERENCES_NM: [sharing, no_sharing]}
 
 
 @api.route('/endpoints')
