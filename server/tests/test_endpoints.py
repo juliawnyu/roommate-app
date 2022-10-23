@@ -78,7 +78,7 @@ def test_get_user_cleaning_preferences():
     """
     See if we can get user cleaning preferences list properly.
     Return should look like:
-        {USER_CLEANING_PREFERENCES_NW: [list of cleaning prefs...]}
+        {USER_CLEANING_PREFERENCES_NM: [list of cleaning prefs...]}
     """
     resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_CLEANING_PREFERENCES).get_json()
     assert isinstance(resp_json[ep.USER_CLEANING_PREFERENCES_NM], list)
@@ -92,6 +92,26 @@ def test_get_user_cleaning_preferences_not_emtpy():
     """
     resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_CLEANING_PREFERENCES).get_json()
     assert len(resp_json[ep.USER_CLEANING_PREFERENCES_NM]) > 0
+
+
+def test_get_user_sharing_preferences():
+    """
+    See if we can get user sharing preferences list properly.
+    Return should look like:
+        {USER_SHARING_PREFERENFES_NM: [list of sharing prefs...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_SHARING_PREFERENES).get_json()
+    assert isinstance(resp_json[ep.USER_SHARING_PREFERENCES_NM], list)
+
+
+def test_get_user_sharing_preferenes_not_empty():
+    """
+    See if we can get user sharing preferenes list not empty.
+    Return should look like:
+        {USER_SHARING_PREFERENCES_NM: [list of sharing prefs...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_SHARING_PREFERENCES).get_json()
+    assert len(resp_json[ep.USER_SHARING_PREFERENCES_NM]) > 0
 
 
 def test_home():
