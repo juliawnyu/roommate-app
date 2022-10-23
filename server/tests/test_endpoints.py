@@ -100,7 +100,7 @@ def test_get_user_sharing_preferences():
     Return should look like:
         {USER_SHARING_PREFERENFES_NM: [list of sharing prefs...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_SHARING_PREFERENES).get_json()
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_SHARING_PREFERENCES).get_json()
     assert isinstance(resp_json[ep.USER_SHARING_PREFERENCES_NM], list)
 
 
