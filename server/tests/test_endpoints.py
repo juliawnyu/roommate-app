@@ -103,3 +103,8 @@ def test_home():
 def test_login():
     response = TEST_CLIENT.get("/login")
     assert response.status == "200 OK"
+
+
+def test_register():
+    response = TEST_CLIENT.get("/register")
+    assert response.status == "200 OK"
