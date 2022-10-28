@@ -147,12 +147,20 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     """
     The login page for our app.
     """
     return render_template('login.html')
+
+@app.route('/')
+def user_homepage():
+    """
+    The landing page for our app.
+    """
+    return render_template('user_homepage.html')
+
 
 
 @app.route('/register', methods=['GET', 'POST'])
