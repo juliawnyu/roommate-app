@@ -132,3 +132,7 @@ def test_register():
 def test_quiz_page():
     response = TEST_CLIENT.get("/quiz")
     assert response.status == "200 OK"
+
+def test_user_homepage():
+    response = TEST_CLIENT.get("/user_homepage")
+    assert response.status == "200 OK"
