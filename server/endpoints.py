@@ -154,13 +154,13 @@ def login():
     """
     return render_template('login.html')
 
+
 @app.route('/')
 def user_homepage():
     """
     The landing page for our app.
     """
     return render_template('user_homepage.html')
-
 
 
 @app.route('/register', methods=['GET', 'POST'])
