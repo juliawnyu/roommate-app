@@ -10,7 +10,9 @@ import secrets
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = secrets.token_urlsafe(32) # Needed for session and other stuff
+
+# Needed for session and other stuff
+app.config['SECRET_KEY'] = secrets.token_urlsafe(32)
 
 API_PATH = '/api'
 DOC_PATH = '/api/doc/'
