@@ -204,9 +204,9 @@ def register():
         grade = request.form['grade']
         try:
             db_users = db.DB_Users()
-            db_users.add_new_user(netID, password, grade)
-        except:
-            print("Error creating new user")
+            error = db_users.add_new_user(netID, password, grade)
+        except error:
+            print(f"Error registering new user: {error}")
     elif request.method == 'GET':
         return render_template('register.html')
 
