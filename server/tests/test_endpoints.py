@@ -114,6 +114,26 @@ def test_get_user_sharing_preferenes_not_empty():
     assert len(resp_json[ep.USER_SHARING_PREFERENCES_NM]) > 0
 
 
+def test_get_user_dorm_frequency():
+    """
+    See if we can get user dorm frequency list properly.
+    Return should look like:
+        {USER_DORM_FREQUENCY_NM: [list of dorm frequency opts...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_DORM_FREQUENCY).get_json()
+    assert isinstance(resp_json[ep.USER_DORM_FREQUENCY_NM], list)
+
+
+def test_get_user_dorm_frequency_not_empty():
+    """
+    See if we can get user dorm frequency list not empty.
+    Return should look like:
+        {USER_DORM_FREQUENCY_NM: [list of dorm frequency opts...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_DORM_FREQUENCY).get_json()
+    assert len(resp_json[ep.USER_DORM_FREQUENCY_NM]) > 0
+
+
 def test_home():
     response = TEST_CLIENT.get("/")
     assert b"Welcome to Roommate Finder!" in response.data

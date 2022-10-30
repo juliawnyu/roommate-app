@@ -48,6 +48,12 @@ USER_SHARING_PREFERENCES_NM = 'user_sharing_preferences_list'
 sharing = 'willing to share items'
 no_sharing = 'not willing to share items'
 
+USER_DORM_FREQUENCY = f'/User_dorm_frequency/{LIST}'
+USER_DORM_FREQUENCY_NM = '/user_dorm_frequency_list'
+never = 'just to sleep'
+often = 'often'
+always = 'always'
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -120,8 +126,21 @@ class UserSharingPreferences(Resource):
     """
     def get(self):
         """
-        Returns list of the two possible user sharing preferences."""
+        Returns list of the two possible user sharing preferences.
+        """
         return {USER_SHARING_PREFERENCES_NM: [sharing, no_sharing]}
+
+
+@api.route(USER_DORM_FREQUENCY)
+class UserDormFrequency(Resource):
+    """
+    This will get a list of user dorm frequency options.
+    """
+    def get(self):
+        """
+        Returns list of possible dorm frequency options.
+        """
+        return {USER_DORM_FREQUENCY_NM: [never, often, always]}
 
 
 @api.route('/endpoints')
