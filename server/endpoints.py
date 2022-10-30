@@ -3,9 +3,9 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_restx import Resource, Api, Namespace
-# import db.db as db
+import db.db as db
 
 
 app = Flask(__name__)
@@ -198,7 +198,12 @@ def register():
     """
     The register page for new users to our app.
     """
-    return render_template('register.html')
+    if request.method == 'POST':
+        netID = request.form['netID']
+        password = request.form['password']
+        grade = request.form['grade']
+    elif request.method == 'GET':
+        return render_template('register.html')
 
 
 @app.route('/quiz')
