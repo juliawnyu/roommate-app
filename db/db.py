@@ -1,19 +1,24 @@
+# Temporary db setup using sqlite3.
+# Once MongoDB is set up, we will change to MongoDB.
+
 import sqlite3
+
 
 db_file = 'database.db'
 
-class DB_Manager:
-    def __init__(self, db_file):
+class DB_Users:
+    def __init__(self):
         self.con = sqlite3.connect(db_file)
         self.cur = self.con.cursor()
 
     # Create new users table - reset table if it already exists
-    def create_users_table(self):
+    # Only use for setting up db environment locally for testing
+    def reset_table(self):
         self.cur.execute("DROP TABLE IF EXISTS users")
         self.cur.execute("CREATE TABLE users(netID, password, grade)")
 
     # Fetch all from users table
-    def fetch_all_users(self):
+    def fetch_all(self):
         res = self.cur.execute("SELECT * FROM users")
         return res.fetchall()
 
@@ -22,13 +27,13 @@ class DB_Manager:
         args = (netID, password, grade)
         try:
             self.cur.execute("INSERT INTO users VALUES (?, ?, ?)", args)
-        except sqlite.Error as error:
-            print(f"Error while adding new user: {error}")
+        except sqlite3.Error as error:
+            print(f"Error adding new user: {error}")
+            return error
 
 
 # Testing db setup
-# db_manager = DB_Manager(db_file)
-# db_manager.create_users_table()
-# db_manager.add_new_user('kip218', 'password123', 'Senior')
-# print(db_manager.fetch_all_users())
-
+# db_users = DB_Users(db_file)
+# db_users.reset_table()
+# db_users.add_new_user('kip218', 'password123', 'Senior')
+# print(db_users.fetch_all_users())
