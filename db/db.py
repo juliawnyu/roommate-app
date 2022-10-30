@@ -9,7 +9,7 @@ db_file = 'database.db'
 
 class DB_Users:
     def __init__(self):
-        self.con = sqlite3.connect(db_file)
+        self.con = sqlite3.connect(db_file, check_same_thread=False)
         self.cur = self.con.cursor()
 
     # Create new users table - reset table if it already exists
@@ -28,6 +28,7 @@ class DB_Users:
         args = (netID, password, grade)
         try:
             self.cur.execute("INSERT INTO users VALUES (?, ?, ?)", args)
+            self.con.commit()
         except sqlite3.Error as error:
             print(f"Error adding new user: {error}")
             return error

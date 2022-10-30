@@ -3,16 +3,20 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_restx import Resource, Api, Namespace
 import db.db as db
+import secrets
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = secrets.token_urlsafe(32) # Needed for session and other stuff
 
 API_PATH = '/api'
 DOC_PATH = '/api/doc/'
 api = Api(app, prefix=API_PATH, doc=DOC_PATH)
+
+db_users = db.DB_Users()
 
 QUIZ_NS = 'quiz'
 
@@ -202,11 +206,21 @@ def register():
         netID = request.form['netID']
         password = request.form['password']
         grade = request.form['grade']
+
         try:
-            db_users = db.DB_Users()
             error = db_users.add_new_user(netID, password, grade)
         except error:
             print(f"Error registering new user: {error}")
+
+        # Error checking
+        if not error:
+            success = "Account created successfully!"
+            flash(success)
+        else:
+            flash(error)
+
+        return redirect(url_for('home'))
+
     elif request.method == 'GET':
         return render_template('register.html')
 
