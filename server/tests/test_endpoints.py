@@ -4,6 +4,7 @@ import pytest
 import server.endpoints as ep
 
 TEST_CLIENT = ep.app.test_client()
+TEST_DB = ep.db_users
 
 
 def test_hello():
@@ -145,10 +146,20 @@ def test_login():
     assert response.status == "200 OK"
 
 
-def test_register():
+def test_register_get():
     response = TEST_CLIENT.get("/register")
     assert response.status == "200 OK"
 
+def test_register_post():
+    TEST_DB.reset_table()
+    response = TEST_CLIENT.post("register", data={
+        "netID": "abc123",
+        "password": "password456",
+        "grade": "Sophomore"
+    })
+    # response code for redirect
+    # -> register new user worked successfully and redirecting to home page
+    assert response.status_code == 302
 
 def test_quiz_page():
     response = TEST_CLIENT.get("/quiz")
