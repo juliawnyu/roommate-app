@@ -5,7 +5,7 @@ The endpoint called `endpoints` will return all available endpoints.
 
 from flask import Flask, render_template, request
 from flask_restx import Resource, Api, Namespace
-# import db.db as db
+import db.db as db
 
 
 app = Flask(__name__)
@@ -199,11 +199,14 @@ def register():
     The register page for new users to our app.
     """
     if request.method == 'POST':
-        pass
-        # netID = request.form['netID']
-        # password = request.form['password']
-        # grade = request.form['grade']
-        # db_users = db.DB_Users()
+        netID = request.form['netID']
+        password = request.form['password']
+        grade = request.form['grade']
+        try:
+            db_users = db.DB_Users()
+            db_users.add_new_user(netID, password, grade)
+        except:
+            print("Error creating new user")
     elif request.method == 'GET':
         return render_template('register.html')
 
