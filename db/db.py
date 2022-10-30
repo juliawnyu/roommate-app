@@ -6,6 +6,7 @@ import sqlite3
 
 db_file = 'database.db'
 
+
 class DB_Users:
     def __init__(self):
         self.con = sqlite3.connect(db_file)
