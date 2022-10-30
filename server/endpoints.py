@@ -4,7 +4,7 @@ The endpoint called `endpoints` will return all available endpoints.
 """
 
 from flask import Flask, render_template
-from flask_restx import Resource, Api
+from flask_restx import Resource, Api, Namespace
 # import db.db as db
 
 
@@ -14,11 +14,17 @@ API_PATH = '/api'
 DOC_PATH = '/api/doc/'
 api = Api(app, prefix=API_PATH, doc=DOC_PATH)
 
+QUIZ_NS = 'quiz'
+
+quiz = Namespace(QUIZ_NS, 'Quiz')
+api.add_namespace(quiz)
+
 LIST = 'list'
 HELLO = '/hello'
 MESSAGE = 'message'
 
 USER_GRADES = f'/User_grades/{LIST}'
+USER_GRADES_NS = f'/{QUIZ_NS}/User_grades/{LIST}'
 USER_GRADES_NM = 'user_grades_list'
 freshman = 'freshman'
 sophomore = 'sophomore'
@@ -26,29 +32,34 @@ junior = 'junior'
 senior = 'senior'
 
 USER_COMMON_BEDTIMES = f'/User_common_bedtimes/{LIST}'
+USER_COMMON_BEDTIMES_NS = f'/{QUIZ_NS}/User_common_bedtimes/{LIST}'
 USER_COMMON_BEDTIMES_NM = 'user_common_bedtimes_list'
 early = '7-9pm'
 late = '10-12'
 very_late = '1+'
 
 USER_GUEST_PREFERENCES = f'/User_guest_preferences/{LIST}'
+USER_GUEST_PREFERENCES_NS = f'/{QUIZ_NS}/User_guest_preferences/{LIST}'
 USER_GUEST_PREFERENCES_NM = 'user_guest_preferences_list'
 no_guests = 'no guests'
 few_guests = 'a few guests'
 lots_of_guests = 'any amount of guests'
 
 USER_CLEANING_PREFERENCES = f'/User_cleaning_preferences/{LIST}'
+USER_CLEANING_PREFERENCES_NS = f'/{QUIZ_NS}/User_cleaning_preferences/{LIST}'
 USER_CLEANING_PREFERENCES_NM = 'user_cleaning_preferences_list'
 clean_tidy = 'clean and tidy'
 clean_messy = 'clean but messy'
 messy = 'messy'
 
 USER_SHARING_PREFERENCES = f'/User_sharing_preferences/{LIST}'
+USER_SHARING_PREFERENCES_NS = f'/{QUIZ_NS}/User_sharing_preferences/{LIST}'
 USER_SHARING_PREFERENCES_NM = 'user_sharing_preferences_list'
 sharing = 'willing to share items'
 no_sharing = 'not willing to share items'
 
 USER_DORM_FREQUENCY = f'/User_dorm_frequency/{LIST}'
+USER_DORM_FREQUENCY_NS = f'/{QUIZ_NS}/User_dorm_frequency/{LIST}'
 USER_DORM_FREQUENCY_NM = '/user_dorm_frequency_list'
 never = 'just to sleep'
 often = 'often'
@@ -69,7 +80,7 @@ class HelloWorld(Resource):
         return {MESSAGE: 'hello world'}
 
 
-@api.route(USER_GRADES)
+@quiz.route(USER_GRADES)
 class UserGrades(Resource):
     """
     This will get a list of user grades.
@@ -81,7 +92,7 @@ class UserGrades(Resource):
         return {USER_GRADES_NM: [freshman, sophomore, junior, senior]}
 
 
-@api.route(USER_COMMON_BEDTIMES)
+@quiz.route(USER_COMMON_BEDTIMES)
 class UserCommonBedtimes(Resource):
     """
     This will get a list of common user bedtimes.
@@ -93,7 +104,7 @@ class UserCommonBedtimes(Resource):
         return {USER_COMMON_BEDTIMES_NM: [early, late, very_late]}
 
 
-@api.route(USER_GUEST_PREFERENCES)
+@quiz.route(USER_GUEST_PREFERENCES)
 class UserGuestPreferences(Resource):
     """
     This will get a list of user guest preferences.
@@ -106,7 +117,7 @@ class UserGuestPreferences(Resource):
                 [no_guests, few_guests, lots_of_guests]}
 
 
-@api.route(USER_CLEANING_PREFERENCES)
+@quiz.route(USER_CLEANING_PREFERENCES)
 class UserCleaningPreferences(Resource):
     """
     This will get a list of user cleaning preferences.
@@ -119,7 +130,7 @@ class UserCleaningPreferences(Resource):
                 [clean_tidy, clean_messy, messy]}
 
 
-@api.route(USER_SHARING_PREFERENCES)
+@quiz.route(USER_SHARING_PREFERENCES)
 class UserSharingPreferences(Resource):
     """
     This will get a list of user sharing preferences.
@@ -131,7 +142,7 @@ class UserSharingPreferences(Resource):
         return {USER_SHARING_PREFERENCES_NM: [sharing, no_sharing]}
 
 
-@api.route(USER_DORM_FREQUENCY)
+@quiz.route(USER_DORM_FREQUENCY)
 class UserDormFrequency(Resource):
     """
     This will get a list of user dorm frequency options.
