@@ -161,6 +161,10 @@ def test_register_post():
     # -> register new user worked successfully and redirecting to home page
     assert response.status_code == 302
 
+def test_user_homepage():
+    response = TEST_CLIENT.get("/user_homepage")
+    assert response.status == "200 OK"
+
 def test_quiz_page():
     response = TEST_CLIENT.get("/quiz")
     assert response.status == "200 OK"

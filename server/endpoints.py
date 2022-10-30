@@ -191,7 +191,7 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/')
+@app.route('/user_homepage')
 def user_homepage():
     """
     The landing page for our app.
