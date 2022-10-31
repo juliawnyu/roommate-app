@@ -27,6 +27,16 @@
 	</select></br>
 	<input type="submit" value = "submit" />
 
+	<p>How social are you?</p>
+	<select id="guests" name="guests">
+		<option value="not at all">never</option>
+		<option value="rarely">rarely</option>
+        <option value="sometimes">sometimes</option>
+        <option value="often">often</option>
+        <option value="very social">very often</option>
+	</select></br>
+	<input type="submit" value = "submit" />
+
 	{% if error %}
 		<p class="error"><strong>Error:</strong> {{error}}</p>
 	{% endif %}
