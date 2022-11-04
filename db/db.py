@@ -41,7 +41,7 @@ class DB_Users:
     def check_login(self, netID, password):
         args = (netID, password)
         try:
-            res = self.cur.execute(\
+            res = self.cur.execute(
                 "SELECT * FROM users WHERE netID=? AND password=?", args)
             res = res.fetchall()
         except Exception as error:
