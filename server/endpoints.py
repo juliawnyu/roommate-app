@@ -188,7 +188,27 @@ def login():
     """
     The login page for our app.
     """
-    return render_template('login.html')
+    if request.method == 'POST':
+        netID = request.form['netID']
+        password = request.form['password']
+
+        try:
+            user_found = db_users.check_login(netID, password)
+        except Exception as error:
+            print(f"Error logging in: {error}")
+
+        if user_found:
+            success = "Logged in successfully!"
+            flash(success)
+            # should be updated to post-login profile / account page
+            return redirect(url_for('home'))
+        else:
+            error = "Failed to log in."
+            flash(error)
+            return redirect(url_for('home'))
+
+    elif request.method == 'GET':
+        return render_template('login.html')
 
 
 @app.route('/user_homepage')
@@ -210,15 +230,15 @@ def register():
         grade = request.form['grade']
 
         try:
-            error = db_users.add_new_user(netID, password, grade)
-        except error:
+            user_created = db_users.add_new_user(netID, password, grade)
+        except Exception as error:
             print(f"Error registering new user: {error}")
 
-        # Error checking
-        if not error:
+        if user_created:
             success = "Account created successfully!"
             flash(success)
         else:
+            error = "Failed to create new account."
             flash(error)
 
         return redirect(url_for('home'))

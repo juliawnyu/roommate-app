@@ -15,10 +15,10 @@
   {% endif %}
 {% endwith %}
     <h1>Log in</h1>
-<form action="/loginCustomer" method="POST">
-	<input type="text" name = "email" placeholder="email" required/> </br>
+<form method="POST">
+	<input type="text" name = "netID" placeholder="netID" required/> </br>
 	<input type="password" name = "password" placeholder="password" required/></br>
-	<input type="submit" value = Login />
+	<input type="submit" value ="submit" />
 	{% if error %}
 		<p class="error"><strong>Error:</strong> {{error}}</p>
 	{% endif %}

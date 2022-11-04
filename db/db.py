@@ -25,14 +25,32 @@ class DB_Users:
         return res.fetchall()
 
     # Add new user into users table
+    # Todo - store password hash instead of plaintext
+    # Todo - check if user account already exists
     def add_new_user(self, netID, password, grade):
         args = (netID, password, grade)
         try:
             self.cur.execute("INSERT INTO users VALUES (?, ?, ?)", args)
             self.con.commit()
-        except sqlite3.Error as error:
-            print(f"Error adding new user: {error}")
-            return error
+        except Exception as error:
+            return False
+        return True
+
+    # Retrieve user info for login
+    def check_login(self, netID, password):
+        args = (netID, password)
+        try:
+            res = self.cur.execute("SELECT * FROM users WHERE netID=? AND password=?", args)
+            res = res.fetchall()
+        except Exception as error:
+            return False
+
+        # only return True if login attempt retrieves a single user account
+        if len(res) == 1:
+            return True
+        else:
+            return False
+
 
 
 # Testing db setup
