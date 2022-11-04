@@ -33,6 +33,7 @@ class DB_Users:
             self.cur.execute("INSERT INTO users VALUES (?, ?, ?)", args)
             self.con.commit()
         except Exception as error:
+            print(f"Error in add_new_user(): {error}")
             return False
         return True
 
@@ -40,9 +41,11 @@ class DB_Users:
     def check_login(self, netID, password):
         args = (netID, password)
         try:
-            res = self.cur.execute("SELECT * FROM users WHERE netID=? AND password=?", args)
+            res = self.cur.execute(\
+                "SELECT * FROM users WHERE netID=? AND password=?", args)
             res = res.fetchall()
         except Exception as error:
+            print(f"Error in check_login(): {error}")
             return False
 
         # only return True if login attempt retrieves a single user account
@@ -50,8 +53,6 @@ class DB_Users:
             return True
         else:
             return False
-
-
 
 # Testing db setup
 # db_users = DB_Users(db_file)
