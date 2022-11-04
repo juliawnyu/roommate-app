@@ -11,6 +11,7 @@ class DB_Users:
     def __init__(self):
         self.con = sqlite3.connect(db_file, check_same_thread=False)
         self.cur = self.con.cursor()
+        self.reset_table()
 
     # Create new users table - reset table if it already exists
     # Only use for setting up db environment locally for testing
