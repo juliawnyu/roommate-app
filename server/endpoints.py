@@ -71,6 +71,13 @@ never = 'just to sleep'
 often = 'often'
 always = 'always'
 
+USER_GENDER_PREFERENCE = f'/User_gender_preference/{LIST}'
+USER_GENDER_PREFERENCE_NS = f'/{QUIZ_NS}/User_gender_preference/{LIST}'
+USER_GENDER_PREFERENCE_NM = '/user_gender_preference'
+male = 'male'
+female = 'female'
+any_gender = 'any'
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -108,6 +115,18 @@ class UserCommonBedtimes(Resource):
         Returns list of possible bedtimes.
         """
         return {USER_COMMON_BEDTIMES_NM: [early, late, very_late]}
+
+
+@quiz.route(USER_GENDER_PREFERENCE)
+class UserGenderPreference(Resource):
+    """
+    This will get a list of common user bedtimes.
+    """
+    def get(self):
+        """
+        Returns list of possible bedtimes.
+        """
+        return {USER_GENDER_PREFERENCE_NM: [male, female, any_gender]}
 
 
 @quiz.route(USER_GUEST_PREFERENCES)
@@ -201,7 +220,7 @@ def login():
             success = "Logged in successfully!"
             flash(success)
             # should be updated to post-login profile / account page
-            return redirect(url_for('home'))
+            return redirect(url_for('user_homepage'))
         else:
             error = "Failed to log in."
             flash(error)
