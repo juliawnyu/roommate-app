@@ -145,6 +145,26 @@ def test_get_user_dorm_frequency_not_empty():
     assert len(resp_json[ep.USER_DORM_FREQUENCY_NM]) > 0
 
 
+def test_get_user_animal_preference():
+    """
+    See if we can get user service animal preference list properly.
+    Return should look like:
+        {USER_ANIMAL_PREFERENCES_NM: [list of service animal prefs...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_ANIMAL_PREFERENCES_NS).get_json()
+    assert isinstance(resp_json[ep.USER_ANIMAL_PREFERENCES_NM], list)
+
+
+def test_get_user_animal_preferences_not_empty():
+    """
+    See if we can get user animal preferences list not empty.
+    Return should look like:
+        {USER_ANIMAL_PREFERENCES_NM: [list of service animal prefs opts...]}
+    """
+    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_ANIMAL_PREFERENCES_NS).get_json()
+    assert len(resp_json[ep.USER_ANIMAL_PREFERENCES_NM]) > 0
+
+
 def test_home():
     response = TEST_CLIENT.get("/")
     assert b"Welcome to Roommate Finder!" in response.data
@@ -160,6 +180,7 @@ def test_register_get():
     response = TEST_CLIENT.get("/register")
     assert response.status == "200 OK"
 
+
 def test_register_post():
     TEST_DB.reset_table()
     response = TEST_CLIENT.post("register", data={
@@ -171,9 +192,11 @@ def test_register_post():
     # -> register new user worked successfully and redirecting to home page
     assert response.status_code == 302
 
+
 def test_user_homepage():
     response = TEST_CLIENT.get("/user_homepage")
     assert response.status == "200 OK"
+
 
 def test_quiz_page():
     response = TEST_CLIENT.get("/quiz")
