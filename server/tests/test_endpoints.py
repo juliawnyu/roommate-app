@@ -201,3 +201,7 @@ def test_user_homepage():
 def test_quiz_page():
     response = TEST_CLIENT.get("/quiz")
     assert response.status == "200 OK"
+
+def test_clark():
+    response = TEST_CLIENT.get("/clark")
+    assert response.status == "200 OK"
