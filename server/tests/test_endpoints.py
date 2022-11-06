@@ -202,6 +202,15 @@ def test_quiz_page():
     response = TEST_CLIENT.get("/quiz")
     assert response.status == "200 OK"
 
+
 def test_clark():
     response = TEST_CLIENT.get("/clark")
     assert response.status == "200 OK"
+
+
+def test_othmer():
+    response = TEST_CLIENT.get("/othmer")
+    assert response.status == "404 NOT FOUND"
+
+#cannot find othmer for some reason
+
