@@ -78,6 +78,12 @@ male = 'male'
 female = 'female'
 any_gender = 'any'
 
+USER_ANIMAL_PREFERENCES = f'/User_animal_preference/{LIST}'
+USER_ANIMAL_PREFERENCES_NS = f'/{QUIZ_NS}/User_animal_preference/{LIST}'
+USER_ANIMAL_PREFERENCES_NM = '/user_animal_preferences_list'
+comfortable = "comfortable with service animals"
+not_comfortable = "uncomfortable with service animals"
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -177,6 +183,18 @@ class UserDormFrequency(Resource):
         Returns list of possible dorm frequency options.
         """
         return {USER_DORM_FREQUENCY_NM: [never, often, always]}
+
+
+@quiz.route(USER_ANIMAL_PREFERENCES)
+class UserAnimalPreferences(Resource):
+    """
+    This will get a list of a user's possible service animal preferences.
+    """
+    def get(self):
+        """
+        Returns list of possible animal preferences options.
+        """
+        return {USER_ANIMAL_PREFERENCES_NM: [comfortable, not_comfortable]}
 
 
 @api.route('/endpoints')
