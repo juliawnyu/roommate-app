@@ -115,16 +115,6 @@ def test_get_user_sharing_preferenes_not_empty():
     assert len(resp_json[ep.USER_SHARING_PREFERENCES_NM]) > 0
 
 
-def test_get_user_gender_preference():
-    """
-    See if we can get user gender preference list properly.
-    Return should look like:
-        {USER_GENDER_PREFERENCE: [list of user pref...]}
-    """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_GENDER_PREFERENCE).get_json()
-    assert isinstance(resp_json[ep.USER_GENDER_PREFERENCE_NM], list)
-
-
 def test_get_user_gender_preference_not_emtpy():
     """
     See if we can get user gender preference list not empty.

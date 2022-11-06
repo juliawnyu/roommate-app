@@ -73,7 +73,7 @@ always = 'always'
 
 USER_GENDER_PREFERENCE = f'/User_gender_preference/{LIST}'
 USER_GENDER_PREFERENCE_NS = f'/{QUIZ_NS}/User_gender_preference/{LIST}'
-USER_GENDER_PREFERENCE_NM = '/user_gender_preference'
+USER_GENDER_PREFERENCE_NM = '/user_gender_preference_list'
 male = 'male'
 female = 'female'
 any_gender = 'any'
@@ -120,11 +120,11 @@ class UserCommonBedtimes(Resource):
 @quiz.route(USER_GENDER_PREFERENCE)
 class UserGenderPreference(Resource):
     """
-    This will get a list of common user bedtimes.
+    This will get a list of user gender preference
     """
     def get(self):
         """
-        Returns list of possible bedtimes.
+        Returns list of gender preferences
         """
         return {USER_GENDER_PREFERENCE_NM: [male, female, any_gender]}
 
