@@ -242,9 +242,11 @@ class MainMenu(Resource):
                 'Default': 1,
                 'Choices': {
                     '1': {'url': f'/{API_PATH}{USER_GRADES_NS}',
-                          'method': 'get', 'text': 'List User Grades'},
+                          'method': 'get',
+                          'text': 'List User Grades'},
                     '2': {'url': f'/{API_PATH}{USER_COMMON_BEDTIMES_NS}',
-                          'method': 'get', 'text': 'List User Common Bedtimes'},
+                          'method': 'get',
+                          'text': 'List User Common Bedtimes'},
                     'X': {'text': 'Exit'},
                 }}
 
