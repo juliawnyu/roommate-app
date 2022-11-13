@@ -20,18 +20,15 @@ api = Api(app, prefix=API_PATH, doc=DOC_PATH)
 
 db_users = db.DB_Users()
 
+MAIN_MENU = '/main_menu'
+MAIN_MENU_NM = 'Main Menu'
+
 QUIZ_NS = 'quiz'
-USERS_NS = 'users'
 
 quiz = Namespace(QUIZ_NS, 'Quiz')
 api.add_namespace(quiz)
-users = Namespace(USERS_NS, 'Users')
-api.add_namespace(users)
 
 LIST = 'list'
-DICT = 'dict'
-DETAILS = 'details'
-ADD = 'add'
 HELLO = '/hello'
 MESSAGE = 'message'
 
@@ -90,15 +87,6 @@ USER_ANIMAL_PREFERENCES_NM = '/user_animal_preferences_list'
 comfortable = "comfortable with service animals"
 not_comfortable = "uncomfortable with service animals"
 
-USER_DICT = f'/{DICT}'
-USER_DICT_NS = f'/{USERS_NS}/{DICT}'
-USER_DICT_NM = f'/{USERS_NS}_dict'
-USER_LIST = f'/{LIST}'
-USER_LIST_NS = f'/{USERS_NS}/{LIST}'
-USER_LIST_NM = f'/{USERS_NS}_list'
-USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
-USER_ADD = f'/{USERS_NS}/{ADD}'
-
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -123,7 +111,9 @@ class UserGrades(Resource):
         """
         Returns a list of possible grades.
         """
-        return {USER_GRADES_NM: [freshman, sophomore, junior, senior]}
+        return {'Title': 'UserGrades',
+                'Type': 'Data',
+                'Data': {1: freshman, 2: sophomore, 3: junior, 4: senior}}
 
 
 @quiz.route(USER_COMMON_BEDTIMES)
@@ -135,7 +125,9 @@ class UserCommonBedtimes(Resource):
         """
         Returns list of possible bedtimes.
         """
-        return {USER_COMMON_BEDTIMES_NM: [early, late, very_late]}
+        return {'Title': 'UserCommonBedtimes',
+                'Type': 'Data',
+                'Data': {1: early, 2: late, 3: very_late}}
 
 
 @quiz.route(USER_GENDER_PREFERENCE)
@@ -147,7 +139,9 @@ class UserGenderPreference(Resource):
         """
         Returns list of gender preferences
         """
-        return {USER_GENDER_PREFERENCE_NM: [male, female, any_gender]}
+        return {'Title': 'UserGenderPreference',
+                'Type': 'Data',
+                'Data': {1: male, 2: female, 3: any_gender}}
 
 
 @quiz.route(USER_GUEST_PREFERENCES)
@@ -159,8 +153,9 @@ class UserGuestPreferences(Resource):
         """
         Returns list of possible guest preferences.
         """
-        return {USER_GUEST_PREFERENCES_NM:
-                [no_guests, few_guests, lots_of_guests]}
+        return {'Title': 'UserGuestPreferences',
+                'Type': 'Data',
+                'Data': {1: no_guests, 2: few_guests, 3: lots_of_guests}}
 
 
 @quiz.route(USER_CLEANING_PREFERENCES)
@@ -172,8 +167,9 @@ class UserCleaningPreferences(Resource):
         """
         Returns list of possible cleaning preferences.
         """
-        return {USER_CLEANING_PREFERENCES_NM:
-                [clean_tidy, clean_messy, messy]}
+        return {'Title': 'UserCleaningPreferences',
+                'Type': 'Data',
+                'Data': {1: clean_tidy, 2: clean_messy, 3: messy}}
 
 
 @quiz.route(USER_SHARING_PREFERENCES)
@@ -185,7 +181,9 @@ class UserSharingPreferences(Resource):
         """
         Returns list of the two possible user sharing preferences.
         """
-        return {USER_SHARING_PREFERENCES_NM: [sharing, no_sharing]}
+        return {'Title': 'UserSharingPreferences',
+                'Type': 'Data',
+                'Data': {1: sharing, 2: no_sharing}}
 
 
 @quiz.route(USER_DORM_FREQUENCY)
@@ -197,7 +195,9 @@ class UserDormFrequency(Resource):
         """
         Returns list of possible dorm frequency options.
         """
-        return {USER_DORM_FREQUENCY_NM: [never, often, always]}
+        return {'Title': 'UserDormFrequency',
+                'Type': 'Data',
+                'Data': {1: never, 2: often, 3: always}}
 
 
 @quiz.route(USER_ANIMAL_PREFERENCES)
@@ -209,7 +209,9 @@ class UserAnimalPreferences(Resource):
         """
         Returns list of possible animal preferences options.
         """
-        return {USER_ANIMAL_PREFERENCES_NM: [comfortable, not_comfortable]}
+        return {'Title': 'UserAnimalPreferences',
+                'Type': 'Data',
+                'Data': {1: comfortable, 2: not_comfortable}}
 
 
 @api.route('/endpoints')
@@ -225,6 +227,26 @@ class Endpoints(Resource):
         endpoints = ''
         # sorted(rule.rule for rule in api.app.url_map.iter_rules())
         return {"Available endpoints": endpoints}
+
+
+@api.route(MAIN_MENU)
+class MainMenu(Resource):
+    """
+    This will deliver our main menu.
+    """
+    def get(self):
+        """
+        Gets the main game menu.
+        """
+        return {'Title': MAIN_MENU_NM,
+                'Default': 1,
+                'Choices': {
+                    '1': {'url': f'/{API_PATH}{USER_GRADES_NS}',
+                          'method': 'get', 'text': 'List User Grades'},
+                    '2': {'url': f'/{API_PATH}{USER_COMMON_BEDTIMES_NS}',
+                          'method': 'get', 'text': 'List User Common Bedtimes'},
+                    'X': {'text': 'Exit'},
+                }}
 
 
 @app.route('/')
