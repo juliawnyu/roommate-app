@@ -54,6 +54,24 @@ class DB_Users:
         else:
             return False
 
+    # Check if user already exists
+    def user_exists(self, netID):
+        args = (netID)
+        try:
+            res = self.cur.execute(
+                "SELECT * FROM users WHERE netID=?", args)
+            res = res.fetchall()
+        except Exception as error:
+            print(f"Error in check_login(): {error}")
+            return False
+
+        # return true if user netID exists in database
+        if len(res) >= 1:
+            return True
+        else:
+            return False
+
+
 # Testing db setup
 # db_users = DB_Users(db_file)
 # db_users.reset_table()
