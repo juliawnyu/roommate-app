@@ -21,11 +21,17 @@ api = Api(app, prefix=API_PATH, doc=DOC_PATH)
 db_users = db.DB_Users()
 
 QUIZ_NS = 'quiz'
+USERS_NS = 'users'
 
 quiz = Namespace(QUIZ_NS, 'Quiz')
 api.add_namespace(quiz)
+users = Namespace(USERS_NS, 'Users')
+api.add_namespace(users)
 
 LIST = 'list'
+DICT = 'dict'
+DETAILS = 'details'
+ADD = 'add'
 HELLO = '/hello'
 MESSAGE = 'message'
 
@@ -83,6 +89,15 @@ USER_ANIMAL_PREFERENCES_NS = f'/{QUIZ_NS}/User_animal_preference/{LIST}'
 USER_ANIMAL_PREFERENCES_NM = '/user_animal_preferences_list'
 comfortable = "comfortable with service animals"
 not_comfortable = "uncomfortable with service animals"
+
+USER_DICT = f'/{DICT}'
+USER_DICT_NS = f'/{USERS_NS}/{DICT}'
+USER_DICT_NM = f'/{USERS_NS}_dict'
+USER_LIST = f'/{LIST}'
+USER_LIST_NS = f'/{USERS_NS}/{LIST}'
+USER_LIST_NM = f'/{USERS_NS}_list'
+USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
+USER_ADD = f'/{USERS_NS}/{ADD}'
 
 
 @api.route(HELLO)
