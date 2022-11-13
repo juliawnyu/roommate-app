@@ -247,6 +247,12 @@ class MainMenu(Resource):
                     '2': {'url': f'/{API_PATH}{USER_COMMON_BEDTIMES_NS}',
                           'method': 'get',
                           'text': 'List User Common Bedtimes'},
+                    '3': {'url': f'/{API_PATH}{USER_GUEST_PREFERENCES}',
+                          'method': 'get',
+                          'text': 'List User Guest Preferences'},
+                    '4': {'url': f'/{API_PATH}{USER_CLEANING_PREFERENCES}',
+                          'method': 'get',
+                          'text': 'List User Cleaning Preferences'},
                     'X': {'text': 'Exit'},
                 }}
 
