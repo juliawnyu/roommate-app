@@ -64,7 +64,7 @@ def run_menu(session, server, route=None, menu=None, form=None):
         if not result:
             print(f"Get method failed with code: {result.status_code}")
             exit(1)
-        print(result.content)
+        # print(result.content)
         json_ret = result.json()
         if json_ret[TYPE] == DATA:
             display_data_page(session, server, json_ret)
