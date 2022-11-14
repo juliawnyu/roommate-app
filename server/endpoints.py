@@ -253,6 +253,12 @@ class MainMenu(Resource):
                     '4': {'url': f'/{API_PATH}{USER_CLEANING_PREFERENCES}',
                           'method': 'get',
                           'text': 'List User Cleaning Preferences'},
+                    '5': {'url': f'/{API_PATH}{USER_SHARING_PREFERENCES}',
+                          'method': 'get',
+                          'text': 'List User Sharing Preferences'},
+                     '6': {'url': f'/{API_PATH}{USER_DORM_FREQUENCY}',
+                          'method': 'get',
+                          'text': 'List User Dorm Frequency'},
                     'X': {'text': 'Exit'},
                 }}
 
