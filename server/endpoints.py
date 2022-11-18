@@ -259,6 +259,12 @@ class MainMenu(Resource):
                     '6': {'url': f'/{API_PATH}{USER_DORM_FREQUENCY_NS}',
                           'method': 'get',
                           'text': 'List User Dorm Frequency'},
+                    '7': {'url': f'/{API_PATH}{USER_ANIMAL_PREFERENCES}',
+                          'method': 'get',
+                          'text': 'List User Service Animal Preferences'},
+                    '8': {'url': f'/{API_PATH}{USER_GENDER_PREFERENCE}',
+                          'method': 'get',
+                          'text': 'List User Gender Preferences'},
                     'X': {'text': 'Exit'},
                 }}
 
