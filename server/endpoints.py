@@ -349,6 +349,14 @@ def quiz():
     return render_template('quiz.html')
 
 
+@app.route('/results')
+def results():
+    """
+    app route for the results page for after users take quiz
+    """
+    return render_template('results.html')
+
+
 @app.route('/clark')
 def clark_info():
     """
