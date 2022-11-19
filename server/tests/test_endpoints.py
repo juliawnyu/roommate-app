@@ -199,6 +199,10 @@ def test_user_homepage():
     response = TEST_CLIENT.get("/user_homepage")
     assert response.status == "200 OK"
 
+def test_results():
+    response = TEST_CLIENT.get("/results")
+    assert response.status == "200 OK"
+
 
 def test_quiz_page():
     response = TEST_CLIENT.get("/quiz")
