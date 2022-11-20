@@ -363,3 +363,11 @@ def clark_info():
     The Clark info  page for our app.
     """
     return render_template('clark.html')
+
+
+@app.route('/othmer')
+def othmer_info():
+    """
+    The Othmer info  page for our app.
+    """
+    return render_template('othmer.html')
