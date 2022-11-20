@@ -43,3 +43,23 @@ def get_dorms():
 
 def get_dorm_details(dorm):
     return dorms.get(dorm, None)
+
+
+def add_dorm(name, details):
+    if not isinstance(name, str):
+        raise TypeError("Wrong type for name, must be a string")
+    if not isinstance(details, dict):
+        raise TypeError("Wrong type for details, must be a dict")
+    for field in REQUIRED_FLDS:
+        if field not in details:
+            raise ValueError("Required field missing from details: ", field)
+    dorms[name] = details
+
+
+def main():
+    dorms = get_dorms()
+    print(dorms)
+
+
+if __name__ == '__main__':
+    main()
