@@ -216,7 +216,6 @@ def test_clark():
 
 def test_othmer():
     response = TEST_CLIENT.get("/othmer")
-    assert response.status == "404 NOT FOUND"
+    assert response.status == "200 OK"
 
-#cannot find othmer for some reason
 
