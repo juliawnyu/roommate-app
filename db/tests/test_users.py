@@ -36,3 +36,8 @@ def test_add_missing_field():
 
 def test_add_user(new_user):
     assert user.user_exists(user.TEST_USERNAME)
+
+
+@pytest.mark.skip(reason="method not implemented yet")
+def test_edit_user(dorm):
+    return

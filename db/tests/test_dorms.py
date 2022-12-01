@@ -42,3 +42,8 @@ def test_add_missing_field():
 
 def test_add_dorm(new_dorm):
     assert dm.dorm_exists(dm.TEST_DORM_NAME)
+
+
+@pytest.mark.skip(reason="method not implemented yet")
+def test_edit_dorm(dorm):
+    return
