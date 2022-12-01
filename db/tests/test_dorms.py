@@ -4,13 +4,23 @@ import pytest
 import db.dorms as dm
 
 
+@pytest.fixture(scope='function')
+def new_dorm():
+    details = {}
+    for field in dm.REQUIRED_FLDS:
+        details[field] = 2
+    dm.add_dorm(dm.TEST_DORM_NAME, details)
+    yield
+    dm.del_dorm(dm.TEST_DORM_NAME)
+
+
 def test_get_dorms():
     drms = dm.get_dorms()
     assert isinstance(drms, list)
     assert len(drms) > 1
 
 
-def test_get_dorm_details():
+def test_get_dorm_details(new_dorm):
     drm_dts = dm.get_dorm_details(dm.TEST_DORM_NAME)
     assert isinstance(drm_dts, dict)
 
@@ -30,9 +40,5 @@ def test_add_missing_field():
         dm.add_dorm('a new dorm', {'foo': 'bar'})
 
 
-def test_add_dorm():
-    details = {}
-    for field in dm.REQUIRED_FLDS:
-        details[field] = 2
-    dm.add_dorm(dm.TEST_DORM_NAME, details)
+def test_add_dorm(new_dorm):
     assert dm.dorm_exists(dm.TEST_DORM_NAME)

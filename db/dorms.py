@@ -11,15 +11,15 @@ LOCATION = 'location'
 # mandatory fields.
 REQUIRED_FLDS = [NAME, LOCATION]
 dorms = {
-    TEST_DORM_NAME: {
+    'handle1': {
         NAME: 'Othmer',
         LOCATION: 'Downtown Brooklyn'
     },
-    'Clark': {
+    'handle2': {
         NAME: 'Clark Hall',
         LOCATION: 'Brooklyn Heights'
     },
-    'Carlyle': {
+    'handle3': {
         NAME: 'Carlyle Court',
         LOCATION: 'Union Square West'
     }
@@ -54,6 +54,10 @@ def add_dorm(name, details):
         if field not in details:
             raise ValueError("Required field missing from details: ", field)
     dorms[name] = details
+
+
+def del_dorm(name):
+    del dorms[name]
 
 
 def main():
