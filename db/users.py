@@ -8,8 +8,8 @@ EMAIL = 'email'
 
 REQUIRED_FIELDS = [EMAIL]
 users = {
-    TEST_USERNAME: {EMAIL: 'bmac@biancamacias.com', NAME: 'Bianca'},
-    'handle': {EMAIL: 'julia@juliawestphal.com', NAME: 'Julia'}
+    'handle1': {EMAIL: 'bmac@biancamacias.com', NAME: 'Bianca'},
+    'handle2': {EMAIL: 'julia@juliawestphal.com', NAME: 'Julia'}
 }
 
 
