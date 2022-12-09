@@ -218,6 +218,10 @@ def test_gramercy():
     response = TEST_CLIENT.get("/gramercy")
     assert response.status == "200 OK"
 
+def test_alumni():
+    response = TEST_CLIENT.get("/alumni")
+    assert response.status == "200 OK"
+
 def test_othmer():
     response = TEST_CLIENT.get("/othmer")
     assert response.status == "200 OK"

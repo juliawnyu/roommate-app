@@ -386,4 +386,4 @@ def alumni_info():
     """
     The alumni hall info  page for our app.
     """
-    return render_template('gramercy.html')
+    return render_template('alumni.html')
