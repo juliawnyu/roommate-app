@@ -379,3 +379,11 @@ def gramercy_info():
     The gramercy green info  page for our app.
     """
     return render_template('gramercy.html')
+
+
+@app.route('/alumni')
+def alumni_info():
+    """
+    The alumni hall info  page for our app.
+    """
+    return render_template('gramercy.html')
