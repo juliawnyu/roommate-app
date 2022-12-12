@@ -21,3 +21,18 @@ def connect_db():
         if os.environ.get("LOCAL_MONGO", LOCAL) == LOCAL:
             print("Connecting to Mongo locally...")
             client = pm.MongoClient()
+
+
+def insert_one(collection, doc, db=DORM_DB):
+    """
+    Insert single doc into collection.
+    """
+    client[db][collection].insert_one(doc)
+
+
+def fetch_one(collection, filt, db=DORM_DB):
+    """
+    Find with filter and return first doc found.
+    """
+    for doc in client[db][collection].find(filt):
+        return doc
