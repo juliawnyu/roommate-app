@@ -50,3 +50,14 @@ Our proposed solution is a roommate-matching app that will help NYU students fin
 
 ## Design
 Each of the main requirements will correspond to an API endpoint.
+
+
+# Spring 2023 Update
+Currently, the project is just a little farther behind the example class project worked on last semester (the game API used during lectures). Most of the features such as database connection and new endpoints have been added. This semester, the team would like the following user journey:
+* User registers an account, which is added sucessfully to a database
+* User answers a quiz, and these answers are stored to use to roommate match (could be a user with 2 or 3+ similar answers are a match)
+* User is able to see a dashboard
+
+Stretch features would be:
+* A sophisticated-looking UI
+* Chat feature with matches (involves some networking)
