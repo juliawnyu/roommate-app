@@ -1,11 +1,37 @@
-# Temporary db setup using sqlite3.
-# Once MongoDB is set up, we will change to MongoDB.
-
 import sqlite3
+
+from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+MONGO_ENV = os.environ.get("MONGO_ENV", "LOCAL")
+DB = "DB"
+USERS = "USERS"
+
+if MONGO_ENV == "LOCAL":
+    client = MongoClient()
+    db = client[DB]
+    new_user = {'username': 'kip218',
+                'password': '1234'}
+
+    print("printing db contents")
+    for item in db[USERS].find():
+        print(item)
+
+    print("adding new user...")
+    db[USERS].insert_one(new_user)
+
+    print("printing db contents")
+    for item in db[USERS].find():
+        print(item)
+
+    db[USERS].drop()
+print('done')
 
 
 db_file = 'database.db'
-
 
 class DB_Users:
     def __init__(self):
@@ -70,6 +96,7 @@ class DB_Users:
             return True
         else:
             return False
+
 
 
 # Testing db setup
