@@ -1,6 +1,7 @@
 # Roommate App Project
 Julia Westphal, Bianca Macias, Kang in Park, Chinedu Nnorom
 
+Project is hosted at https://kip218.pythonanywhere.com/.
 
 An example flask rest API server, for SE Fall 2022.
 
