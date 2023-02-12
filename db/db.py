@@ -33,6 +33,7 @@ print('done')
 
 db_file = 'database.db'
 
+
 class DB_Users:
     def __init__(self):
         self.con = sqlite3.connect(db_file, check_same_thread=False)
@@ -96,8 +97,6 @@ class DB_Users:
             return True
         else:
             return False
-
-
 
 # Testing db setup
 # db_users = DB_Users(db_file)
