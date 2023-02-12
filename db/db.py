@@ -1,34 +1,34 @@
 import sqlite3
 
-from pymongo import MongoClient
-import os
-from dotenv import load_dotenv
+# from pymongo import MongoClient
+# import os
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
-MONGO_ENV = os.environ.get("MONGO_ENV", "LOCAL")
-DB = "DB"
-USERS = "USERS"
+# MONGO_ENV = os.environ.get("MONGO_ENV", "LOCAL")
+# DB = "DB"
+# USERS = "USERS"
 
-if MONGO_ENV == "LOCAL":
-    client = MongoClient()
-    db = client[DB]
-    new_user = {'username': 'kip218',
-                'password': '1234'}
+# if MONGO_ENV == "LOCAL":
+#     client = MongoClient()
+#     db = client[DB]
+#     new_user = {'username': 'kip218',
+#                 'password': '1234'}
 
-    print("printing db contents")
-    for item in db[USERS].find():
-        print(item)
+#     print("printing db contents")
+#     for item in db[USERS].find():
+#         print(item)
 
-    print("adding new user...")
-    db[USERS].insert_one(new_user)
+#     print("adding new user...")
+#     db[USERS].insert_one(new_user)
 
-    print("printing db contents")
-    for item in db[USERS].find():
-        print(item)
+#     print("printing db contents")
+#     for item in db[USERS].find():
+#         print(item)
 
-    db[USERS].drop()
-print('done')
+#     db[USERS].drop()
+# print('done')
 
 
 db_file = 'database.db'
