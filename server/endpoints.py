@@ -87,6 +87,13 @@ USER_ANIMAL_PREFERENCES_NM = '/user_animal_preferences_list'
 comfortable = "comfortable with service animals"
 not_comfortable = "uncomfortable with service animals"
 
+COOKING_PREFERENCES = f'/Cooking_preference/{LIST}'
+COOKING_PREFERENCES_NS = f'/{QUIZ_NS}/Cooking_preference/{LIST}'
+COOKING_PREFERENCES_NM = '/cooking_preference'
+always_cooking = "you cook every day"
+sometimes_cooking = "you sometimes cook"
+never_cook = "you stay away from the kitchen"
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -114,6 +121,21 @@ class UserGrades(Resource):
         return {'Title': 'UserGrades',
                 'Type': 'Data',
                 'Data': {1: freshman, 2: sophomore, 3: junior, 4: senior}}
+
+
+@quiz.route(COOKING_PREFERENCES)
+class CookPreferences(Resource):
+    """
+    This will get a list of common cooking preferences.
+    """
+    def get(self):
+        """
+        Returns list of possible bedtimes.
+        """
+        return {'Title': 'CookPreferences',
+                'Type': 'Data',
+                'Data': {1: always_cooking, 2: sometimes_cooking,
+                         3: never_cook}}
 
 
 @quiz.route(USER_COMMON_BEDTIMES)
