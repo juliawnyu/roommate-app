@@ -1,6 +1,8 @@
 
 import pytest
 
+import db.dorms as drm
+
 import server.endpoints as ep
 
 TEST_CLIENT = ep.app.test_client()
@@ -15,6 +17,21 @@ def test_hello():
     """
     resp_json = TEST_CLIENT.get(ep.API_PATH + ep.HELLO).get_json()
     assert isinstance(resp_json[ep.MESSAGE], str)
+
+
+SAMPLE_DORM_NM = 'SampleDorm'
+SAMPLE_DORM = {
+    drm.NAME: SAMPLE_DORM_NM,
+    drm.LOCATION: 'Brooklyn Heights'
+}
+
+def test_add_dorm():
+    """
+    Testing adding a dorm.
+    """
+    resp = TEST_CLIENT.post(ep.DORM_ADD, json=SAMPLE_DORM)
+    assert drm.dorm_exists(SAMPLE_DORM)
+    drm.del_dorm(SAMPLE_DORM_NM)
 
 
 def test_get_grade():
