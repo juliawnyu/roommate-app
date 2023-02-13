@@ -4,8 +4,9 @@ The endpoint called `endpoints` will return all available endpoints.
 """
 
 from flask import Flask, render_template, request, flash, redirect, url_for
-from flask_restx import Resource, Api, Namespace
+from flask_restx import Resource, Api, Namespace, fields
 import db.db as db
+import db.dorms as drm
 import secrets
 
 
@@ -24,13 +25,26 @@ MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
 
 QUIZ_NS = 'quiz'
+DORMS_NS = 'dorms'
 
 quiz = Namespace(QUIZ_NS, 'Quiz')
 api.add_namespace(quiz)
+dorms = Namespace(DORMS_NS, 'Dorms')
+api.add_namespace(dorms)
 
 LIST = 'list'
+DICT = 'dict'
+DETAILS = 'details'
 HELLO = '/hello'
 MESSAGE = 'message'
+ADD = 'add'
+
+DORMS_DICT = f'/{DICT}'
+DORMS_DICT_W_NS = f'{DORMS_NS}/{DICT}'
+DORMS_DETAILS = f'/{DETAILS}'
+DORMS_DETAILS_W_NS = f'{DORMS_NS}/{DETAILS}'
+DORMS_ADD = f'/{DORMS_NS}/{ADD}'
+
 
 USER_GRADES = f'/User_grades/{LIST}'
 USER_GRADES_NS = f'/{QUIZ_NS}/User_grades/{LIST}'
@@ -249,6 +263,29 @@ class Endpoints(Resource):
         endpoints = ''
         # sorted(rule.rule for rule in api.app.url_map.iter_rules())
         return {"Available endpoints": endpoints}
+
+
+dorm_fields = api.model('NewDorm', {
+    drm.NAME: fields.String,
+    drm.LOCATION: fields.String
+})
+
+
+@api.route(DORMS_ADD)
+class AddDorm(Resource):
+    """
+    Add a dorm.
+    """
+    @api.expect(dorm_fields)
+    def post(self):
+        """
+        Adding a game.
+        """
+        print(f'{request.json=}')
+        name = request.json[drm.NAME]
+        del request.json[drm.NAME]
+        drm.add_game(name, request.json)
+
 
 
 @api.route(MAIN_MENU)
