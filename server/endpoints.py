@@ -6,7 +6,6 @@ The endpoint called `endpoints` will return all available endpoints.
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_restx import Resource, Api, Namespace, fields
 import db.db as db
-import db.dorms as drm
 import db.users as usr
 import secrets
 
