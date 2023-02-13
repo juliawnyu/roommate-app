@@ -30,7 +30,7 @@ def test_add_dorm():
     Testing adding a dorm.
     """
     resp = TEST_CLIENT.post(ep.DORMS_ADD, json=SAMPLE_DORM)
-    assert drm.dorm_exists(SAMPLE_DORM)
+    assert drm.dorm_exists(SAMPLE_DORM_NM)
     drm.del_dorm(SAMPLE_DORM_NM)
 
 
