@@ -287,7 +287,6 @@ class AddDorm(Resource):
         drm.add_game(name, request.json)
 
 
-
 @api.route(MAIN_MENU)
 class MainMenu(Resource):
     """
