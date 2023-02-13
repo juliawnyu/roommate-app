@@ -7,6 +7,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_restx import Resource, Api, Namespace, fields
 import db.db as db
 import db.dorms as drm
+import db.users as usr
 import secrets
 
 
@@ -26,6 +27,7 @@ MAIN_MENU_NM = 'Main Menu'
 
 QUIZ_NS = 'quiz'
 DORMS_NS = 'dorms'
+USERS_NS = 'users'
 
 quiz = Namespace(QUIZ_NS, 'Quiz')
 api.add_namespace(quiz)
@@ -41,10 +43,14 @@ ADD = 'add'
 
 DORMS_DICT = f'/{DICT}'
 DORMS_DICT_W_NS = f'{DORMS_NS}/{DICT}'
-DORMS_DETAILS = f'/{DETAILS}'
+DORMS_DETAILS = f'{DORMS_NS}/{DETAILS}'
 DORMS_DETAILS_W_NS = f'{DORMS_NS}/{DETAILS}'
 DORMS_ADD = f'/{DORMS_NS}/{ADD}'
 
+USER_LIST = f'/{USERS_NS}/{LIST}'
+USER_LIST_NM = f'{USERS_NS}_list'
+USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
+USER_ADD = f'/{USERS_NS}/{ADD}'
 
 USER_GRADES = f'/User_grades/{LIST}'
 USER_GRADES_NS = f'/{QUIZ_NS}/User_grades/{LIST}'
@@ -265,26 +271,26 @@ class Endpoints(Resource):
         return {"Available endpoints": endpoints}
 
 
-dorm_fields = api.model('NewDorm', {
-    drm.NAME: fields.String,
-    drm.LOCATION: fields.String
+user_fields = api.model('NewUser', {
+    usr.NAME: fields.String,
+    usr.EMAIL: fields.String
 })
 
 
-@api.route(DORMS_ADD)
-class AddDorm(Resource):
+@api.route(USER_ADD)
+class AddUser(Resource):
     """
-    Add a dorm.
+    Add a user.
     """
-    @api.expect(dorm_fields)
+    @api.expect(user_fields)
     def post(self):
         """
-        Adding a game.
+        Adding a user.
         """
         print(f'{request.json=}')
-        name = request.json[drm.NAME]
-        del request.json[drm.NAME]
-        drm.add_game(name, request.json)
+        name = request.json[usr.NAME]
+        del request.json[usr.NAME]
+        usr.add_user(name, request.json)
 
 
 @api.route(MAIN_MENU)

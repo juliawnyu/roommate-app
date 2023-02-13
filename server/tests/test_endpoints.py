@@ -1,7 +1,7 @@
 
 import pytest
 
-import db.dorms as drm
+import db.users as usr
 
 import server.endpoints as ep
 
@@ -19,19 +19,20 @@ def test_hello():
     assert isinstance(resp_json[ep.MESSAGE], str)
 
 
-SAMPLE_DORM_NM = 'SampleDorm'
-SAMPLE_DORM = {
-    drm.NAME: SAMPLE_DORM_NM,
-    drm.LOCATION: 'Brooklyn Heights'
+SAMPLE_USER_NM = 'SampleUser'
+SAMPLE_USER = {
+    usr.NAME: SAMPLE_USER_NM,
+    usr.EMAIL: 'abc123@nyu.edu'
 }
 
-def test_add_dorm():
+def test_add_user():
     """
-    Testing adding a dorm.
+    Testing adding a user.
     """
-    resp = TEST_CLIENT.post(ep.DORMS_ADD, json=SAMPLE_DORM)
-    assert drm.dorm_exists(SAMPLE_DORM_NM)
-    drm.del_dorm(SAMPLE_DORM_NM)
+    resp = TEST_CLIENT.post(ep.USER_ADD, json=SAMPLE_USER)
+    usr.add_user(SAMPLE_USER_NM, SAMPLE_USER)
+    assert usr.user_exists(SAMPLE_USER_NM)
+    usr.del_user(SAMPLE_USER_NM)
 
 
 def test_get_grade():
