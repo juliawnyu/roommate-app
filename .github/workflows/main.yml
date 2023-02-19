@@ -35,7 +35,12 @@ jobs:
 
       - name: Run Python tests.
         run: make all_tests
-        
+
+      - name: Deploy to PythonAnywhere
+        run: ./deploy.sh
+        env:
+          PA_PWD: roommateproject
+
       # Deploy to Heroku
       #  - uses: akhileshns/heroku-deploy@v3.12.12
       #    with:
