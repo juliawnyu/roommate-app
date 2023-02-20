@@ -120,6 +120,13 @@ morning = "shower in the morning"
 midday = "shower midday"
 night = "shower at night"
 
+DATING_PREFERENCES = f'/dating_preferences/{LIST}'
+DATING_PREFERENCES_NS = f'/{QUIZ_NS}/Dating_preferences/{LIST}'
+DATING_PREFERENCES_NM = '/dating_preferences'
+never_dating = "never dating"
+casually = "casually dating"
+committed = "in a commited relationship"
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -149,6 +156,21 @@ class UserGrades(Resource):
                 'Data': {1: freshman, 2: sophomore, 3: junior, 4: senior}}
 
 
+@quiz.route(DATING_PREFERENCES)
+class DatingPreferences(Resource):
+    """
+    This will get a list of dating preferences.
+    """
+    def get(self):
+        """
+        Returns list of possible dating preferences.
+        """
+        return {'Title': 'CookPreferences',
+                'Type': 'Data',
+                'Data': {1: always_cooking, 2: sometimes_cooking,
+                         3: never_cook}}
+
+
 @quiz.route(COOKING_PREFERENCES)
 class CookPreferences(Resource):
     """
@@ -158,10 +180,10 @@ class CookPreferences(Resource):
         """
         Returns list of possible bedtimes.
         """
-        return {'Title': 'CookPreferences',
+        return {'Title': 'DatingPreferences',
                 'Type': 'Data',
-                'Data': {1: always_cooking, 2: sometimes_cooking,
-                         3: never_cook}}
+                'Data': {1: committed, 2: casually,
+                         3: never_dating}}
 
 
 @quiz.route(SHOWER_TIMES)
