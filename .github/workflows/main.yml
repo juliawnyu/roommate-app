@@ -39,7 +39,7 @@ jobs:
       - name: Deploy to PythonAnywhere
         run: ./deploy.sh
         env:
-          PA_PWD: roommateproject
+          PA_PWD: ${{secrets.PA_PWD}}
 
       # Deploy to Heroku
       #  - uses: akhileshns/heroku-deploy@v3.12.12
