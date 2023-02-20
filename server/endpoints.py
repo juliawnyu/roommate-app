@@ -113,6 +113,13 @@ always_cooking = "you cook every day"
 sometimes_cooking = "you sometimes cook"
 never_cook = "you stay away from the kitchen"
 
+SHOWER_TIMES = f'/shower_times/{LIST}'
+SHOWER_TIMES_NS = f'/{QUIZ_NS}/Shower_times/{LIST}'
+SHOWER_TIMES_NM = '/shower_times'
+morning = "shower in the morning"
+midday = "shower midday"
+night = "shower at night"
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -155,6 +162,20 @@ class CookPreferences(Resource):
                 'Type': 'Data',
                 'Data': {1: always_cooking, 2: sometimes_cooking,
                          3: never_cook}}
+
+
+@quiz.route(SHOWER_TIMES)
+class ShowerTimes(Resource):
+    """
+    This will get a list of when users like to shower
+    """
+    def get(self):
+        """
+        Returns list of possible shower times.
+        """
+        return {'Title': 'ShowerTimes',
+                'Type': 'Data',
+                'Data': {1: morning, 2: midday, 3: night}}
 
 
 @quiz.route(USER_COMMON_BEDTIMES)
