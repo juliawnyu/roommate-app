@@ -1,6 +1,3 @@
-
-import pytest
-
 import db.users as usr
 
 import server.endpoints as ep
@@ -24,6 +21,7 @@ SAMPLE_USER = {
     usr.NAME: SAMPLE_USER_NM,
     usr.EMAIL: 'abc123@nyu.edu'
 }
+
 
 def test_add_user():
     """

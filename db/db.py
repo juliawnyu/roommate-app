@@ -8,9 +8,10 @@ import bcrypt
 load_dotenv()
 
 MONGO_ENV = os.environ.get("MONGO_ENV", "LOCAL")
-# MONGO_URL = os.environ.get("MONGO_URL")
+MONGO_URL = os.environ.get("MONGO_URL")
 DB = "DB"
 USERS = "USERS"
+
 
 # This is our MongoDB manager class to be used for prod
 class DB_Manager:
@@ -34,7 +35,9 @@ class DB_Manager:
 
     def add_user(self, netID, password, grade):
         new_user = {'netID': netID,
-                    'password': bcrypt.hashpw(password.encode(), bcrypt.gensalt()),
+                    'password': bcrypt.hashpw(
+                                password.encode(),
+                                bcrypt.gensalt()),
                     'grade': grade}
         self.users.insert_one(new_user)
 
@@ -44,10 +47,10 @@ class DB_Manager:
             return True
         return False
 
-#test code
+# test code
 # if MONGO_ENV == "LOCAL":
 #     db = DB_Manager()
-    
+
 #     new_user = {'netID': 'kip218',
 #                 'password': '1234',
 #                 'grade': 'senior'}
@@ -67,6 +70,7 @@ class DB_Manager:
 
 
 db_file = 'database.db'
+
 
 # This is a temporary DB class for SQLite3
 class DB_Users:
@@ -132,4 +136,3 @@ class DB_Users:
             return True
         else:
             return False
-
