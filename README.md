@@ -3,6 +3,8 @@ Julia Westphal, Bianca Macias, Kang in Park, Chinedu Nnorom
 
 Project is hosted at https://kip218.pythonanywhere.com/.
 
+Swagger page: https://kip218.pythonanywhere.com/api/doc/
+
 Front-End Repository is hosted at https://github.com/biancamacias/roommate-app-frontend.
 
 An example flask rest API server, for SE Fall 2022.
