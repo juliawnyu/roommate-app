@@ -19,7 +19,7 @@ API_PATH = '/api'
 DOC_PATH = '/api/doc/'
 api = Api(app, prefix=API_PATH, doc=DOC_PATH)
 
-db_users = db.DB_Users()
+db_manager = db.DB_Manager()
 
 MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
@@ -392,12 +392,13 @@ def login():
         netID = request.form['netID']
         password = request.form['password']
 
+        login_correct = False
         try:
-            user_found = db_users.check_login(netID, password)
+            login_correct = db_manager.login_correct(netID, password)
         except Exception as error:
             print(f"Error logging in: {error}")
 
-        if user_found:
+        if login_correct:
             success = "Logged in successfully!"
             flash(success)
             # should be updated to post-login profile / account page
@@ -429,12 +430,22 @@ def register():
         password = request.form['password']
         grade = request.form['grade']
 
-        try:
-            user_created = db_users.add_new_user(netID, password, grade)
-        except Exception as error:
-            print(f"Error registering new user: {error}")
+        user_exists = False
+        if db_manager.get_user(netID):
+            user_exists = True
 
-        if user_created:
+        if not user_exists:
+            user_created = False
+            try:
+                db_manager.add_user(netID, password, grade)
+                user_created = True
+            except Exception as error:
+                print(f"Error registering new user: {error}")
+
+        if user_exists:
+            error = "Account with that netID already exists!"
+            flash(error)
+        elif user_created:
             success = "Account created successfully!"
             flash(success)
         else:
