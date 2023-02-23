@@ -24,8 +24,7 @@ class DB_Manager:
         self.users = self.db[USERS]
 
     def reset_db(self):
-        for collection in self.db.list_collections():
-            collection.drop()
+        self.client.drop_database(self.db)
 
     def get_user(self, netID):
         search = self.users.find_one({'netID': netID})
@@ -67,6 +66,12 @@ class DB_Manager:
 #     print("checking login")
 #     print(db.login_correct('kip218', '1234'))
 #     print(db.login_correct('kip218', '1232'))
+
+#     print("resetting db")
+#     db.reset_db()
+
+#     print("Getting user...")
+#     print(db.get_user('kip218'))
 
 
 db_file = 'database.db'

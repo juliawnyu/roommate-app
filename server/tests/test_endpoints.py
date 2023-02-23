@@ -209,7 +209,7 @@ def test_register_get():
 
 
 def test_register_post():
-    # TEST_DB.reset_table()
+    TEST_DB.reset_db()
     response = TEST_CLIENT.post("register", data={
         "netID": "abc123",
         "password": "password456",
