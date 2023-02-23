@@ -3,3 +3,4 @@ flask-restx
 werkzeug==2.1.2
 python-dotenv
 pymongo
+bcrypt

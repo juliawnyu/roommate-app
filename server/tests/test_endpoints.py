@@ -6,7 +6,7 @@ import db.users as usr
 import server.endpoints as ep
 
 TEST_CLIENT = ep.app.test_client()
-TEST_DB = ep.db_users
+TEST_DB = ep.db_manager
 
 DATA = 'Data'
 
@@ -211,7 +211,7 @@ def test_register_get():
 
 
 def test_register_post():
-    TEST_DB.reset_table()
+    # TEST_DB.reset_table()
     response = TEST_CLIENT.post("register", data={
         "netID": "abc123",
         "password": "password456",

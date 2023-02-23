@@ -1,39 +1,74 @@
 import sqlite3
 
-# from pymongo import MongoClient
-# import os
-# from dotenv import load_dotenv
+from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
+import bcrypt
 
-# load_dotenv()
+load_dotenv()
 
-# MONGO_ENV = os.environ.get("MONGO_ENV", "LOCAL")
-# DB = "DB"
-# USERS = "USERS"
+MONGO_ENV = os.environ.get("MONGO_ENV", "LOCAL")
+# MONGO_URL = os.environ.get("MONGO_URL")
+DB = "DB"
+USERS = "USERS"
 
+# This is our MongoDB manager class to be used for prod
+class DB_Manager:
+    def __init__(self):
+        if MONGO_ENV == "LOCAL":
+            self.client = MongoClient()
+        elif MONGO_ENV == "REMOTE":
+            self.client = MongoClient(MONGO_URL)
+        self.db = self.client[DB]
+        self.users = self.db[USERS]
+
+    def reset_db(self):
+        for collection in self.db.list_collections():
+            collection.drop()
+
+    def get_user(self, netID):
+        search = self.users.find_one({'netID': netID})
+        if search:
+            return search
+        return False
+
+    def add_user(self, netID, password, grade):
+        new_user = {'netID': netID,
+                    'password': bcrypt.hashpw(password.encode(), bcrypt.gensalt()),
+                    'grade': grade}
+        self.users.insert_one(new_user)
+
+    def login_correct(self, netID, password):
+        user = self.get_user(netID)
+        if bcrypt.checkpw(password.encode(), user['password']):
+            return True
+        return False
+
+#test code
 # if MONGO_ENV == "LOCAL":
-#     client = MongoClient()
-#     db = client[DB]
-#     new_user = {'username': 'kip218',
-#                 'password': '1234'}
+#     db = DB_Manager()
+    
+#     new_user = {'netID': 'kip218',
+#                 'password': '1234',
+#                 'grade': 'senior'}
 
-#     print("printing db contents")
-#     for item in db[USERS].find():
-#         print(item)
+#     print("Getting user...")
+#     print(db.get_user('kip218'))
 
-#     print("adding new user...")
-#     db[USERS].insert_one(new_user)
+#     print("adding user")
+#     db.add_user('kip218', '1234', 'senior')
 
-#     print("printing db contents")
-#     for item in db[USERS].find():
-#         print(item)
+#     print("Getting user...")
+#     print(db.get_user('kip218'))
 
-#     db[USERS].drop()
-# print('done')
+#     print("checking login")
+#     print(db.login_correct('kip218', '1234'))
+#     print(db.login_correct('kip218', '1232'))
 
 
 db_file = 'database.db'
 
-
+# This is a temporary DB class for SQLite3
 class DB_Users:
     def __init__(self):
         self.con = sqlite3.connect(db_file, check_same_thread=False)
@@ -98,8 +133,3 @@ class DB_Users:
         else:
             return False
 
-# Testing db setup
-# db_users = DB_Users(db_file)
-# db_users.reset_table()
-# db_users.add_new_user('kip218', 'password123', 'Senior')
-# print(db_users.fetch_all_users())
