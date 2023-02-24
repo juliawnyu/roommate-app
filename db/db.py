@@ -17,7 +17,8 @@ class DB_Manager:
         if MONGO_ENV == "LOCAL":
             self.client = MongoClient()
         elif MONGO_ENV == "REMOTE":
-            self.client = MongoClient(MONGO_URL,
+            self.client = MongoClient(
+                                MONGO_URL,
                                 connectTimeoutMS=30000,
                                 socketTimeoutMS=None,
                                 connect=False,
@@ -79,13 +80,13 @@ class DB_Manager:
 #     print(db.get_user('kip218'))
 
 
-#test remote connection
-if MONGO_ENV == "REMOTE":
-    db = DB_Manager()
+# test remote connection
+# if MONGO_ENV == "REMOTE":
+#     db = DB_Manager()
 
-    print("Getting user...")
-    print(db.get_user('kip218'))
+#     print("Getting user...")
+#     print(db.get_user('kip218'))
 
-    print("checking login")
-    print(db.login_correct('kip218', '1234'))
-    print(db.login_correct('kip218', '1232'))
+#     print("checking login")
+#     print(db.login_correct('kip218', '1234'))
+#     print(db.login_correct('kip218', '1232'))
