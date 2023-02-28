@@ -5,51 +5,39 @@
     <title>Quiz template</title>
 </head>
 <body>
-    <h2>Complete our brief survey to get your roommate</h2>
 <form>
-	<p>What time do you usually go to bed?</p>
-	<select id="sleep" name="sleep">
+
+</form>
+    <h1>Take our Quiz!</h1>
+    <form method="POST">
+      <label for="sleep" class="form-label">What time do you usually go to bed?</label>
+      <select type="text" name="sleep" class="form-control" required>
 		<option value="super early">6pm-9pm</option>
 		<option value="early">9pm-11pm</option>
         <option value="normal">11pm-1am</option>
         <option value="late">1am-3am</option>
         <option value="super late">1am-3am</option>
-	</select></br>
-	<input type="submit" value = "submit" />
-
-	<p>How often do you have guests over?</p>
-	<select id="guests" name="guests">
+	  </select>
+      <br>
+      <label for="guests" class="form-label">How often do you have guests over?</label>
+		<select type="text" name="guests" class="form-control" required>
 		<option value="never">never</option>
 		<option value="rarely">rarely</option>
         <option value="sometimes">sometimes</option>
         <option value="often">often</option>
         <option value="very often">very often</option>
-	</select></br>
-	<input type="submit" value = "submit" />
-
-	<p>How social are you?</p>
-	<select id="social" name="social">
+			</select>
+      <br>
+      <label for="social" class="form-label">Grade Level</label>
+      <select type="text" name="grade" class="form-control" required>
 		<option value="not at all">never</option>
 		<option value="rarely">rarely</option>
         <option value="sometimes">sometimes</option>
         <option value="often">often</option>
         <option value="very social">very often</option>
-	</select></br>
-	<input type="submit" value = "submit" />
-
-
-	<p>Are you open to sharing?</p>
-	<select id="sharing" name="sharing">
-		<option value="not at all">never</option>
-		<option value="rarely">rarely</option>
-        <option value="sometimes">sometimes</option>
-        <option value="definitely">often</option>
-	</select></br>
-	<input type="submit" value = "submit" />
-
-	{% if error %}
-		<p class="error"><strong>Error:</strong> {{error}}</p>
-	{% endif %}
-</form>
+      </select>
+      <br>
+      <input type="submit" value = "submit" />
+	</form>
 </body>
 </html>

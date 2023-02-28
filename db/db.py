@@ -43,6 +43,13 @@ class DB_Manager:
                     'grade': grade}
         self.users.insert_one(new_user)
 
+    def add_quiz(self, sleep, guests, social):
+        self.users.insert({
+            'sleep': sleep,
+            'guests': guests,
+            'social': social
+        })
+
     def remove_user(self, netID):
         self.users.delete_one({'netID': netID})
 

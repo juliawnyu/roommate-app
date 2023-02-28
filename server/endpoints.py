@@ -458,12 +458,21 @@ def register():
         return render_template('register.html')
 
 
-@app.route('/quiz')
+@app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     """
     app route for the roommate quiz we use for matching
     """
-    return render_template('quiz.html')
+    if request.method == 'POST':
+        sleep = request.form['sleep']
+        guests = request.form['guests']
+        social = request.form['social']
+
+        db_manager.add_quiz(sleep, guests, social)
+        return redirect('results.html')
+
+    elif request.method == 'GET':
+        return render_template('quiz.html')
 
 
 @app.route('/results')
