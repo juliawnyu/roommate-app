@@ -2,7 +2,7 @@ LINTER = flake8
 API_DIR = server
 DB_DIR = db
 REQ_DIR = .
-PYTESTFLAGS = -vv --verbose --tb=short
+PYTESTFLAGS = -vv --verbose --tb=short --cov=$(PKG) --cov-branch --cov-report term-missing
 
 FORCE:
 
@@ -15,11 +15,13 @@ github: FORCE
 all_tests: lint unit
 
 unit: FORCE
-	cd $(API_DIR); pytest $(PYTESTFLAGS)
+	pytest $(PYTESTFLAGS)
 
 lint: FORCE
-	$(LINTER) $(API_DIR)/*.py
-	$(LINTER) $(DB_DIR)/*.py
+	$(LINTER) $(*.py)
+
+%.py: FORCE
+	pytest -s tests/test_$*.py
 
 dev_env: FORCE
 	pip install -r $(REQ_DIR)/requirements-dev.txt
