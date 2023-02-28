@@ -1,2 +1,2 @@
-PKG = server
+PKG = db
 include ../common.mk
