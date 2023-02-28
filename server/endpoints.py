@@ -199,7 +199,7 @@ class AddCooking(Resource):
     @api.expect(user_quiz)
     def post(self):
         """
-        Adding a user.
+        Adding a user cookinf pref.
         """
         print(f'{request.json=}')
 
