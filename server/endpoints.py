@@ -180,7 +180,7 @@ class CookPreferences(Resource):
     """
     def get(self):
         """
-        Returns list of possible bedtimes.
+        Returns list of common cooking preferences.
         """
         return {'Title': 'DatingPreferences',
                 'Type': 'Data',
