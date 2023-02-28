@@ -7,6 +7,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_restx import Resource, Api, Namespace, fields
 import db.db as db
 import db.users as usr
+import db.quiz as quizDB
 import secrets
 
 
@@ -107,6 +108,7 @@ comfortable = "comfortable with service animals"
 not_comfortable = "uncomfortable with service animals"
 
 COOKING_PREFERENCES = f'/Cooking_preference/{LIST}'
+COOKING_PREFERENCES_ADD = f'/Cooking_preference_add/{LIST}'
 COOKING_PREFERENCES_NS = f'/{QUIZ_NS}/Cooking_preference/{LIST}'
 COOKING_PREFERENCES_NM = '/cooking_preference'
 always_cooking = "you cook every day"
@@ -184,6 +186,22 @@ class CookPreferences(Resource):
                 'Type': 'Data',
                 'Data': {1: committed, 2: casually,
                          3: never_dating}}
+
+
+user_quiz = quizDB.COOKING = fields.String
+
+
+@quiz.route(COOKING_PREFERENCES_ADD)
+class AddCooking(Resource):
+    """
+    adds user cooking preferences.
+    """
+    @api.expect(user_quiz)
+    def post(self):
+        """
+        Adding a user.
+        """
+        print(f'{request.json=}')
 
 
 @quiz.route(SHOWER_TIMES)
