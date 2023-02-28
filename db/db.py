@@ -44,11 +44,12 @@ class DB_Manager:
         self.users.insert_one(new_user)
 
     def add_quiz(self, sleep, guests, social):
-        self.users.insert({
+        quiz_users = {
             'sleep': sleep,
             'guests': guests,
             'social': social
-        })
+        }
+        self.users.insert_one(quiz_users)
 
     def remove_user(self, netID):
         self.users.delete_one({'netID': netID})
