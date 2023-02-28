@@ -29,7 +29,7 @@ def test_add_user():
     """
     Testing adding a user.
     """
-    resp = TEST_CLIENT.post(ep.USER_ADD, json=SAMPLE_USER)
+    TEST_CLIENT.post(ep.USER_ADD, json=SAMPLE_USER)
     usr.add_user(SAMPLE_USER_NM, SAMPLE_USER)
     assert usr.user_exists(SAMPLE_USER_NM)
     usr.del_user(SAMPLE_USER_NM)
@@ -61,8 +61,10 @@ def test_get_user_common_bedtimes():
     Return should look like:
         {USER_COMMON_BEDTIMES_NW: [list of common times...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_COMMON_BEDTIMES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_COMMON_BEDTIMES_NS).get_json()
     assert isinstance(resp_json[DATA], dict)
+
 
 def test_get_cook_preferences():
     """
@@ -70,7 +72,8 @@ def test_get_cook_preferences():
     Return should look like:
         {COOKING_PREFERENCES_NM: [list of common times...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.COOKING_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.COOKING_PREFERENCES_NS).get_json()
     assert isinstance(resp_json[DATA], dict)
 
 
@@ -80,7 +83,8 @@ def test_get_user_common_bedtimes_list_not_empty():
     Return should look like:
         {USER_COMMON_BEDTIMES_NM: [list of common times...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_COMMON_BEDTIMES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_COMMON_BEDTIMES_NS).get_json()
     assert len(resp_json[DATA]) > 0
 
 
@@ -90,7 +94,8 @@ def test_get_user_guest_preferences():
     Return should look like:
         {USER_GUEST_PREFERENCES_NW: [list of guest prefs...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_GUEST_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_GUEST_PREFERENCES_NS).get_json()
     assert isinstance(resp_json[DATA], dict)
 
 
@@ -100,7 +105,8 @@ def test_get_user_guest_preferences_not_emtpy():
     Return should look like:
         {USER_GUEST_PREFERENCES_NW: [list of guest prefs...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_GUEST_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_GUEST_PREFERENCES_NS).get_json()
     assert len(resp_json[DATA]) > 0
 
 
@@ -110,7 +116,8 @@ def test_get_user_cleaning_preferences():
     Return should look like:
         {USER_CLEANING_PREFERENCES_NM: [list of cleaning prefs...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_CLEANING_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_CLEANING_PREFERENCES_NS).get_json()
     assert isinstance(resp_json[DATA], dict)
 
 
@@ -120,7 +127,8 @@ def test_get_user_cleaning_preferences_not_emtpy():
     Return should look like:
         {USER_CLEANING_PREFERENCES_NW: [list of cleaning prefs...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_CLEANING_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_CLEANING_PREFERENCES_NS).get_json()
     assert len(resp_json[DATA]) > 0
 
 
@@ -130,7 +138,8 @@ def test_get_user_sharing_preferences():
     Return should look like:
         {USER_SHARING_PREFERENFES_NM: [list of sharing prefs...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_SHARING_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_SHARING_PREFERENCES_NS).get_json()
     assert isinstance(resp_json[DATA], dict)
 
 
@@ -140,7 +149,8 @@ def test_get_user_sharing_preferenes_not_empty():
     Return should look like:
         {USER_SHARING_PREFERENCES_NM: [list of sharing prefs...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_SHARING_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_SHARING_PREFERENCES_NS).get_json()
     assert len(resp_json[DATA]) > 0
 
 
@@ -150,7 +160,8 @@ def test_get_user_gender_preference_not_emtpy():
     Return should look like:
         {USER_GENDER_PREFERENCE_NW: [list of gender pref...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_GENDER_PREFERENCE_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_GENDER_PREFERENCE_NS).get_json()
     assert len(resp_json[DATA]) > 0
 
 
@@ -160,7 +171,8 @@ def test_get_user_dorm_frequency():
     Return should look like:
         {USER_DORM_FREQUENCY_NM: [list of dorm frequency opts...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_DORM_FREQUENCY_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_DORM_FREQUENCY_NS).get_json()
     assert isinstance(resp_json[DATA], dict)
 
 
@@ -170,7 +182,8 @@ def test_get_user_dorm_frequency_not_empty():
     Return should look like:
         {USER_DORM_FREQUENCY_NM: [list of dorm frequency opts...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_DORM_FREQUENCY_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_DORM_FREQUENCY_NS).get_json()
     assert len(resp_json[DATA]) > 0
 
 
@@ -180,7 +193,8 @@ def test_get_user_animal_preference():
     Return should look like:
         {USER_ANIMAL_PREFERENCES_NM: [list of service animal prefs...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_ANIMAL_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_ANIMAL_PREFERENCES_NS).get_json()
     assert isinstance(resp_json[DATA], dict)
 
 
@@ -190,7 +204,8 @@ def test_get_user_animal_preferences_not_empty():
     Return should look like:
         {USER_ANIMAL_PREFERENCES_NM: [list of service animal prefs opts...]}
     """
-    resp_json = TEST_CLIENT.get(ep.API_PATH + ep.USER_ANIMAL_PREFERENCES_NS).get_json()
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_ANIMAL_PREFERENCES_NS).get_json()
     assert len(resp_json[DATA]) > 0
 
 
@@ -227,6 +242,7 @@ def test_user_homepage():
     response = TEST_CLIENT.get("/user_homepage")
     assert response.status == "200 OK"
 
+
 def test_results():
     response = TEST_CLIENT.get("/results")
     assert response.status == "200 OK"
@@ -246,12 +262,12 @@ def test_gramercy():
     response = TEST_CLIENT.get("/gramercy")
     assert response.status == "200 OK"
 
+
 def test_alumni():
     response = TEST_CLIENT.get("/alumni")
     assert response.status == "200 OK"
 
+
 def test_othmer():
     response = TEST_CLIENT.get("/othmer")
     assert response.status == "200 OK"
-
-
