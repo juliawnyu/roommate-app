@@ -25,12 +25,12 @@ db_manager = db.DB_Manager()
 MAIN_MENU = '/main_menu'
 MAIN_MENU_NM = 'Main Menu'
 
-QUIZ_NS = 'quiz'
+QUESTIONNAIRE_NS = 'questionnaire'
 DORMS_NS = 'dorms'
 USERS_NS = 'users'
 
-quiz = Namespace(QUIZ_NS, 'Quiz')
-api.add_namespace(quiz)
+questionnaire = Namespace(QUESTIONNAIRE_NS, 'Questionnaire')
+api.add_namespace(questionnaire)
 dorms = Namespace(DORMS_NS, 'Dorms')
 api.add_namespace(dorms)
 
@@ -53,7 +53,7 @@ USER_DETAILS = f'/{USERS_NS}/{DETAILS}'
 USER_ADD = f'/{USERS_NS}/{ADD}'
 
 USER_GRADES = f'/User_grades/{LIST}'
-USER_GRADES_NS = f'/{QUIZ_NS}/User_grades/{LIST}'
+USER_GRADES_NS = f'/{QUESTIONNAIRE_NS}/User_grades/{LIST}'
 USER_GRADES_NM = 'User_grades_list'
 freshman = 'freshman'
 sophomore = 'sophomore'
@@ -61,69 +61,69 @@ junior = 'junior'
 senior = 'senior'
 
 USER_COMMON_BEDTIMES = f'/User_common_bedtimes/{LIST}'
-USER_COMMON_BEDTIMES_NS = f'/{QUIZ_NS}/User_common_bedtimes/{LIST}'
+USER_COMMON_BEDTIMES_NS = f'/{QUESTIONNAIRE_NS}/User_common_bedtimes/{LIST}'
 USER_COMMON_BEDTIMES_NM = 'User_common_bedtimes_list'
 early = '7-9pm'
 late = '10-12'
 very_late = '1+'
 
 USER_GUEST_PREFERENCES = f'/User_guest_preferences/{LIST}'
-USER_GUEST_PREFERENCES_NS = f'/{QUIZ_NS}/User_guest_preferences/{LIST}'
+USER_GUEST_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/User_guest_preferences/{LIST}'
 USER_GUEST_PREFERENCES_NM = 'User_guest_preferences_list'
 no_guests = 'no guests'
 few_guests = 'a few guests'
 lots_of_guests = 'any amount of guests'
 
 USER_CLEANING_PREFERENCES = f'/User_cleaning_preferences/{LIST}'
-USER_CLEANING_PREFERENCES_NS = f'/{QUIZ_NS}/User_cleaning_preferences/{LIST}'
+USER_CLEANING_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/User_cleaning_preferences/{LIST}'
 USER_CLEANING_PREFERENCES_NM = 'User_cleaning_preferences_list'
 clean_tidy = 'clean and tidy'
 clean_messy = 'clean but messy'
 messy = 'messy'
 
 USER_SHARING_PREFERENCES = f'/User_sharing_preferences/{LIST}'
-USER_SHARING_PREFERENCES_NS = f'/{QUIZ_NS}/User_sharing_preferences/{LIST}'
+USER_SHARING_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/User_sharing_preferences/{LIST}'
 USER_SHARING_PREFERENCES_NM = 'User_sharing_preferences_list'
 sharing = 'willing to share items'
 no_sharing = 'not willing to share items'
 
 USER_DORM_FREQUENCY = f'/User_dorm_frequency/{LIST}'
-USER_DORM_FREQUENCY_NS = f'/{QUIZ_NS}/User_dorm_frequency/{LIST}'
+USER_DORM_FREQUENCY_NS = f'/{QUESTIONNAIRE_NS}/User_dorm_frequency/{LIST}'
 USER_DORM_FREQUENCY_NM = '/User_dorm_frequency_list'
 never = 'just to sleep'
 often = 'often'
 always = 'always'
 
 USER_GENDER_PREFERENCE = f'/User_gender_preference/{LIST}'
-USER_GENDER_PREFERENCE_NS = f'/{QUIZ_NS}/User_gender_preference/{LIST}'
+USER_GENDER_PREFERENCE_NS = f'/{QUESTIONNAIRE_NS}/User_gender_preference/{LIST}'
 USER_GENDER_PREFERENCE_NM = '/User_gender_preference_list'
 male = 'male'
 female = 'female'
 any_gender = 'any'
 
 USER_ANIMAL_PREFERENCES = f'/User_animal_preference/{LIST}'
-USER_ANIMAL_PREFERENCES_NS = f'/{QUIZ_NS}/User_animal_preference/{LIST}'
+USER_ANIMAL_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/User_animal_preference/{LIST}'
 USER_ANIMAL_PREFERENCES_NM = '/User_animal_preferences_list'
 comfortable = "comfortable with service animals"
 not_comfortable = "uncomfortable with service animals"
 
 COOKING_PREFERENCES = f'/Cooking_preference/{LIST}'
 COOKING_PREFERENCES_ADD = f'/Cooking_preference_add/{LIST}'
-COOKING_PREFERENCES_NS = f'/{QUIZ_NS}/Cooking_preference/{LIST}'
+COOKING_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/Cooking_preference/{LIST}'
 COOKING_PREFERENCES_NM = '/Cooking_preference'
 always_cooking = "you cook every day"
 sometimes_cooking = "you sometimes cook"
 never_cook = "you stay away from the kitchen"
 
 SHOWER_TIMES = f'/Shower_times/{LIST}'
-SHOWER_TIMES_NS = f'/{QUIZ_NS}/Shower_times/{LIST}'
+SHOWER_TIMES_NS = f'/{QUESTIONNAIRE_NS}/Shower_times/{LIST}'
 SHOWER_TIMES_NM = '/Shower_times'
 morning = "shower in the morning"
 midday = "shower midday"
 night = "shower at night"
 
 DATING_PREFERENCES = f'/Dating_preferences/{LIST}'
-DATING_PREFERENCES_NS = f'/{QUIZ_NS}/Dating_preferences/{LIST}'
+DATING_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/Dating_preferences/{LIST}'
 DATING_PREFERENCES_NM = '/Dating_preferences'
 never_dating = "never dating"
 casually = "casually dating"
@@ -144,7 +144,7 @@ class HelloWorld(Resource):
         return {MESSAGE: 'hello world'}
 
 
-@quiz.route(USER_GRADES)
+@questionnaire.route(USER_GRADES)
 class UserGrades(Resource):
     """
     This will get a list of user grades.
@@ -158,7 +158,7 @@ class UserGrades(Resource):
                 'Data': {1: freshman, 2: sophomore, 3: junior, 4: senior}}
 
 
-@quiz.route(DATING_PREFERENCES)
+@questionnaire.route(DATING_PREFERENCES)
 class DatingPreferences(Resource):
     """
     This will get a list of dating preferences.
@@ -173,7 +173,7 @@ class DatingPreferences(Resource):
                          3: never_cook}}
 
 
-@quiz.route(COOKING_PREFERENCES)
+@questionnaire.route(COOKING_PREFERENCES)
 class CookPreferences(Resource):
     """
     This will get a list of common cooking preferences.
@@ -191,7 +191,7 @@ class CookPreferences(Resource):
 user_quiz = quizDB.COOKING = fields.String
 
 
-@quiz.route(COOKING_PREFERENCES_ADD)
+@questionnaire.route(COOKING_PREFERENCES_ADD)
 class AddCooking(Resource):
     """
     adds user cooking preferences.
@@ -204,7 +204,7 @@ class AddCooking(Resource):
         print(f'{request.json=}')
 
 
-@quiz.route(SHOWER_TIMES)
+@questionnaire.route(SHOWER_TIMES)
 class ShowerTimes(Resource):
     """
     This will get a list of when users like to shower
@@ -218,7 +218,7 @@ class ShowerTimes(Resource):
                 'Data': {1: morning, 2: midday, 3: night}}
 
 
-@quiz.route(USER_COMMON_BEDTIMES)
+@questionnaire.route(USER_COMMON_BEDTIMES)
 class UserCommonBedtimes(Resource):
     """
     This will get a list of common user bedtimes.
@@ -232,7 +232,7 @@ class UserCommonBedtimes(Resource):
                 'Data': {1: early, 2: late, 3: very_late}}
 
 
-@quiz.route(USER_GENDER_PREFERENCE)
+@questionnaire.route(USER_GENDER_PREFERENCE)
 class UserGenderPreference(Resource):
     """
     This will get a list of user gender preference
@@ -246,7 +246,7 @@ class UserGenderPreference(Resource):
                 'Data': {1: male, 2: female, 3: any_gender}}
 
 
-@quiz.route(USER_GUEST_PREFERENCES)
+@questionnaire.route(USER_GUEST_PREFERENCES)
 class UserGuestPreferences(Resource):
     """
     This will get a list of user guest preferences.
@@ -260,7 +260,7 @@ class UserGuestPreferences(Resource):
                 'Data': {1: no_guests, 2: few_guests, 3: lots_of_guests}}
 
 
-@quiz.route(USER_CLEANING_PREFERENCES)
+@questionnaire.route(USER_CLEANING_PREFERENCES)
 class UserCleaningPreferences(Resource):
     """
     This will get a list of user cleaning preferences.
@@ -274,7 +274,7 @@ class UserCleaningPreferences(Resource):
                 'Data': {1: clean_tidy, 2: clean_messy, 3: messy}}
 
 
-@quiz.route(USER_SHARING_PREFERENCES)
+@questionnaire.route(USER_SHARING_PREFERENCES)
 class UserSharingPreferences(Resource):
     """
     This will get a list of user sharing preferences.
@@ -288,7 +288,7 @@ class UserSharingPreferences(Resource):
                 'Data': {1: sharing, 2: no_sharing}}
 
 
-@quiz.route(USER_DORM_FREQUENCY)
+@questionnaire.route(USER_DORM_FREQUENCY)
 class UserDormFrequency(Resource):
     """
     This will get a list of user dorm frequency options.
@@ -302,7 +302,7 @@ class UserDormFrequency(Resource):
                 'Data': {1: never, 2: often, 3: always}}
 
 
-@quiz.route(USER_ANIMAL_PREFERENCES)
+@questionnaire.route(USER_ANIMAL_PREFERENCES)
 class UserAnimalPreferences(Resource):
     """
     This will get a list of a user's possible service animal preferences.
@@ -476,8 +476,8 @@ def register():
         return render_template('register.html')
 
 
-@app.route('/quiz', methods=['GET', 'POST'])
-def quiz():
+@app.route('/quiestionnaire', methods=['GET', 'POST'])
+def questionnaire():
     """
     app route for the roommate quiz we use for matching
     """

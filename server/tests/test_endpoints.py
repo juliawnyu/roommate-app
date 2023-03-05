@@ -248,8 +248,8 @@ def test_results():
     assert response.status == "200 OK"
 
 
-def test_quiz_page():
-    response = TEST_CLIENT.get("/quiz")
+def test_questionnaire_page():
+    response = TEST_CLIENT.get("/questionnaire")
     assert response.status == "200 OK"
 
 
