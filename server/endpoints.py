@@ -54,7 +54,7 @@ USER_ADD = f'/{USERS_NS}/{ADD}'
 
 USER_GRADES = f'/User_grades/{LIST}'
 USER_GRADES_NS = f'/{QUIZ_NS}/User_grades/{LIST}'
-USER_GRADES_NM = 'user_grades_list'
+USER_GRADES_NM = 'User_grades_list'
 freshman = 'freshman'
 sophomore = 'sophomore'
 junior = 'junior'
@@ -62,69 +62,69 @@ senior = 'senior'
 
 USER_COMMON_BEDTIMES = f'/User_common_bedtimes/{LIST}'
 USER_COMMON_BEDTIMES_NS = f'/{QUIZ_NS}/User_common_bedtimes/{LIST}'
-USER_COMMON_BEDTIMES_NM = 'user_common_bedtimes_list'
+USER_COMMON_BEDTIMES_NM = 'User_common_bedtimes_list'
 early = '7-9pm'
 late = '10-12'
 very_late = '1+'
 
 USER_GUEST_PREFERENCES = f'/User_guest_preferences/{LIST}'
 USER_GUEST_PREFERENCES_NS = f'/{QUIZ_NS}/User_guest_preferences/{LIST}'
-USER_GUEST_PREFERENCES_NM = 'user_guest_preferences_list'
+USER_GUEST_PREFERENCES_NM = 'User_guest_preferences_list'
 no_guests = 'no guests'
 few_guests = 'a few guests'
 lots_of_guests = 'any amount of guests'
 
 USER_CLEANING_PREFERENCES = f'/User_cleaning_preferences/{LIST}'
 USER_CLEANING_PREFERENCES_NS = f'/{QUIZ_NS}/User_cleaning_preferences/{LIST}'
-USER_CLEANING_PREFERENCES_NM = 'user_cleaning_preferences_list'
+USER_CLEANING_PREFERENCES_NM = 'User_cleaning_preferences_list'
 clean_tidy = 'clean and tidy'
 clean_messy = 'clean but messy'
 messy = 'messy'
 
 USER_SHARING_PREFERENCES = f'/User_sharing_preferences/{LIST}'
 USER_SHARING_PREFERENCES_NS = f'/{QUIZ_NS}/User_sharing_preferences/{LIST}'
-USER_SHARING_PREFERENCES_NM = 'user_sharing_preferences_list'
+USER_SHARING_PREFERENCES_NM = 'User_sharing_preferences_list'
 sharing = 'willing to share items'
 no_sharing = 'not willing to share items'
 
 USER_DORM_FREQUENCY = f'/User_dorm_frequency/{LIST}'
 USER_DORM_FREQUENCY_NS = f'/{QUIZ_NS}/User_dorm_frequency/{LIST}'
-USER_DORM_FREQUENCY_NM = '/user_dorm_frequency_list'
+USER_DORM_FREQUENCY_NM = '/User_dorm_frequency_list'
 never = 'just to sleep'
 often = 'often'
 always = 'always'
 
 USER_GENDER_PREFERENCE = f'/User_gender_preference/{LIST}'
 USER_GENDER_PREFERENCE_NS = f'/{QUIZ_NS}/User_gender_preference/{LIST}'
-USER_GENDER_PREFERENCE_NM = '/user_gender_preference_list'
+USER_GENDER_PREFERENCE_NM = '/User_gender_preference_list'
 male = 'male'
 female = 'female'
 any_gender = 'any'
 
 USER_ANIMAL_PREFERENCES = f'/User_animal_preference/{LIST}'
 USER_ANIMAL_PREFERENCES_NS = f'/{QUIZ_NS}/User_animal_preference/{LIST}'
-USER_ANIMAL_PREFERENCES_NM = '/user_animal_preferences_list'
+USER_ANIMAL_PREFERENCES_NM = '/User_animal_preferences_list'
 comfortable = "comfortable with service animals"
 not_comfortable = "uncomfortable with service animals"
 
 COOKING_PREFERENCES = f'/Cooking_preference/{LIST}'
 COOKING_PREFERENCES_ADD = f'/Cooking_preference_add/{LIST}'
 COOKING_PREFERENCES_NS = f'/{QUIZ_NS}/Cooking_preference/{LIST}'
-COOKING_PREFERENCES_NM = '/cooking_preference'
+COOKING_PREFERENCES_NM = '/Cooking_preference'
 always_cooking = "you cook every day"
 sometimes_cooking = "you sometimes cook"
 never_cook = "you stay away from the kitchen"
 
-SHOWER_TIMES = f'/shower_times/{LIST}'
+SHOWER_TIMES = f'/Shower_times/{LIST}'
 SHOWER_TIMES_NS = f'/{QUIZ_NS}/Shower_times/{LIST}'
-SHOWER_TIMES_NM = '/shower_times'
+SHOWER_TIMES_NM = '/Shower_times'
 morning = "shower in the morning"
 midday = "shower midday"
 night = "shower at night"
 
-DATING_PREFERENCES = f'/dating_preferences/{LIST}'
+DATING_PREFERENCES = f'/Dating_preferences/{LIST}'
 DATING_PREFERENCES_NS = f'/{QUIZ_NS}/Dating_preferences/{LIST}'
-DATING_PREFERENCES_NM = '/dating_preferences'
+DATING_PREFERENCES_NM = '/Dating_preferences'
 never_dating = "never dating"
 casually = "casually dating"
 committed = "in a commited relationship"
