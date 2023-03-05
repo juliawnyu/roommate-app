@@ -68,47 +68,59 @@ late = '10-12'
 very_late = '1+'
 
 USER_GUEST_PREFERENCES = f'/User_guest_preferences/{LIST}'
-USER_GUEST_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}\
-    /User_guest_preferences/{LIST}'
+USER_GUEST_PREFERENCES_NS = (
+        f'/{QUESTIONNAIRE_NS}'
+        f'/User_guest_preferences/{LIST}'
+    )
 USER_GUEST_PREFERENCES_NM = 'User_guest_preferences_list'
 no_guests = 'no guests'
 few_guests = 'a few guests'
 lots_of_guests = 'any amount of guests'
 
 USER_CLEANING_PREFERENCES = f'/User_cleaning_preferences/{LIST}'
-USER_CLEANING_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}\
-    /User_cleaning_preferences/{LIST}'
+USER_CLEANING_PREFERENCES_NS = (
+        f'/{QUESTIONNAIRE_NS}'
+        f'/User_cleaning_preferences/{LIST}'
+    )
 USER_CLEANING_PREFERENCES_NM = 'User_cleaning_preferences_list'
 clean_tidy = 'clean and tidy'
 clean_messy = 'clean but messy'
 messy = 'messy'
 
 USER_SHARING_PREFERENCES = f'/User_sharing_preferences/{LIST}'
-USER_SHARING_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}\
-    /User_sharing_preferences/{LIST}'
+USER_SHARING_PREFERENCES_NS = (
+        f'/{QUESTIONNAIRE_NS}'
+        f'/User_sharing_preferences/{LIST}'
+    )
 USER_SHARING_PREFERENCES_NM = 'User_sharing_preferences_list'
 sharing = 'willing to share items'
 no_sharing = 'not willing to share items'
 
 USER_DORM_FREQUENCY = f'/User_dorm_frequency/{LIST}'
-USER_DORM_FREQUENCY_NS = f'/{QUESTIONNAIRE_NS}\
-    /User_dorm_frequency/{LIST}'
+USER_DORM_FREQUENCY_NS = (
+        f'/{QUESTIONNAIRE_NS}'
+        f'/User_dorm_frequency/{LIST}'
+    )
 USER_DORM_FREQUENCY_NM = '/User_dorm_frequency_list'
 never = 'just to sleep'
 often = 'often'
 always = 'always'
 
 USER_GENDER_PREFERENCE = f'/User_gender_preference/{LIST}'
-USER_GENDER_PREFERENCE_NS = f'/{QUESTIONNAIRE_NS}\
-    /User_gender_preference/{LIST}'
+USER_GENDER_PREFERENCE_NS = (
+        f'/{QUESTIONNAIRE_NS}'
+        f'/User_gender_preference/{LIST}'
+    )
 USER_GENDER_PREFERENCE_NM = '/User_gender_preference_list'
 male = 'male'
 female = 'female'
 any_gender = 'any'
 
 USER_ANIMAL_PREFERENCES = f'/User_animal_preference/{LIST}'
-USER_ANIMAL_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}\
-    /User_animal_preference/{LIST}'
+USER_ANIMAL_PREFERENCES_NS = (
+        f'/{QUESTIONNAIRE_NS}'
+        f'/User_animal_preference/{LIST}'
+    )
 USER_ANIMAL_PREFERENCES_NM = '/User_animal_preferences_list'
 comfortable = "comfortable with service animals"
 not_comfortable = "uncomfortable with service animals"
@@ -482,7 +494,7 @@ def register():
         return render_template('register.html')
 
 
-@app.route('/quiestionnaire', methods=['GET', 'POST'])
+@app.route('/questionnaire', methods=['GET', 'POST'])
 def questionnaire():
     """
     app route for the roommate quiz we use for matching
