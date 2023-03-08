@@ -77,6 +77,17 @@ def test_get_cook_preferences():
     assert isinstance(resp_json[DATA], dict)
 
 
+def test_get_dating_preferences():
+    """
+    See if we can get a dating preferences type list properly.
+    Return should look like:
+        {DATING_PREFERENCES_NM: [list of common times...]}
+    """
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.DATING_PREFERENCES_NS).get_json()
+    assert isinstance(resp_json[DATA], dict)
+
+
 def test_get_user_common_bedtimes_list_not_empty():
     """
     See if we can get common bedtimes list not empty.
