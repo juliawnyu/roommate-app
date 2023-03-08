@@ -185,10 +185,10 @@ class DatingPreferences(Resource):
         """
         Returns list of possible dating preferences.
         """
-        return {'Title': 'CookPreferences',
+        return {'Title': 'DatingPreferences',
                 'Type': 'Data',
-                'Data': {1: always_cooking, 2: sometimes_cooking,
-                         3: never_cook}}
+                'Data': {1: committed, 2: casually,
+                         3: never_dating}}
 
 
 @questionnaire.route(COOKING_PREFERENCES)
@@ -200,10 +200,10 @@ class CookPreferences(Resource):
         """
         Returns list of common cooking preferences.
         """
-        return {'Title': 'DatingPreferences',
+        return {'Title': 'CookPreferences',
                 'Type': 'Data',
-                'Data': {1: committed, 2: casually,
-                         3: never_dating}}
+                'Data': {1: always_cooking, 2: sometimes_cooking,
+                         3: never_cook}}
 
 
 user_quiz = quizDB.COOKING = fields.String
