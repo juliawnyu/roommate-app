@@ -3,7 +3,8 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 
-from flask import Flask, render_template, request, flash, redirect, url_for, session
+from flask import Flask, render_template, request,\
+                    flash, redirect, url_for, session
 from flask_restx import Resource, Api, Namespace, fields
 from flask_session import Session
 import db.db as db
@@ -503,12 +504,12 @@ def questionnaire():
     """
     app route for the roommate quiz we use for matching
     """
-    if request.method == 'POST':
-        sleep = request.form['sleep']
-        guests = request.form['guests']
-        social = request.form['social']
 
-        # in progress - doesn't change db
+    # in progress - doesn't change db
+    if request.method == 'POST':
+        # sleep = request.form['sleep']
+        # guests = request.form['guests']
+        # social = request.form['social']
         # db_manager.add_quiz(sleep, guests, social)
         return redirect(url_for('results'))
 

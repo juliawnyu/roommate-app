@@ -43,13 +43,14 @@ class DB_Manager:
                     'grade': grade}
         self.users.insert_one(new_user)
 
+    # in progress
     def add_quiz(self, sleep, guests, social):
-        quiz_users = {
-            'sleep': sleep,
-            'guests': guests,
-            'social': social
-        }
-        # in progress
+        # quiz_users = {
+        #     'sleep': sleep,
+        #     'guests': guests,
+        #     'social': social
+        # }
+
         # self.users.insert_one(quiz_users)
         return
 
