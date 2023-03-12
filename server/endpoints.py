@@ -3,8 +3,9 @@ This is the file containing all of the endpoints for our flask app.
 The endpoint called `endpoints` will return all available endpoints.
 """
 
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for, session
 from flask_restx import Resource, Api, Namespace, fields
+from flask_session import Session
 import db.db as db
 import db.users as usr
 import db.quiz as quizDB
@@ -15,6 +16,8 @@ app = Flask(__name__)
 
 # Needed for session and other stuff
 app.config['SECRET_KEY'] = secrets.token_urlsafe(32)
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
 
 API_PATH = '/api'
 DOC_PATH = '/api/doc/'
@@ -435,6 +438,7 @@ def login():
             print(f"Error logging in: {error}")
 
         if login_correct:
+            session['netID'] = netID
             success = "Logged in successfully!"
             flash(success)
             # should be updated to post-login profile / account page
@@ -504,8 +508,9 @@ def questionnaire():
         guests = request.form['guests']
         social = request.form['social']
 
-        db_manager.add_quiz(sleep, guests, social)
-        return redirect('results.html')
+        # in progress - doesn't change db
+        # db_manager.add_quiz(sleep, guests, social)
+        return redirect(url_for('results'))
 
     elif request.method == 'GET':
         return render_template('questionnaire.html')

@@ -4,3 +4,4 @@ werkzeug==2.1.2
 python-dotenv
 pymongo[srv]
 bcrypt
+Flask-Session

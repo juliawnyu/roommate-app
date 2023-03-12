@@ -49,7 +49,9 @@ class DB_Manager:
             'guests': guests,
             'social': social
         }
-        self.users.insert_one(quiz_users)
+        # in progress
+        # self.users.insert_one(quiz_users)
+        return
 
     def remove_user(self, netID):
         self.users.delete_one({'netID': netID})
