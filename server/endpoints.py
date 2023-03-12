@@ -508,7 +508,7 @@ def questionnaire():
         return redirect('results.html')
 
     elif request.method == 'GET':
-        return render_template('quiz.html')
+        return render_template('questionnaire.html')
 
 
 @app.route('/results')
