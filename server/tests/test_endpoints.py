@@ -220,6 +220,28 @@ def test_get_user_animal_preferences_not_empty():
     assert len(resp_json[DATA]) > 0
 
 
+def test_get_user_alcohol_preferences():
+    """
+    See if we can get user alcohol preference list properly.
+    Return should look like:
+        {USER_ALCOHOL_PREFERENCES_NM: [list of alcohol prefs...]}
+    """
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_ALCOHOL_PREFERENCES_NS).get_json()
+    assert isinstance(resp_json[DATA], dict)
+
+
+def test_get_user_alcohol_preferences_not_empty():
+    """
+    See if we can get user alcohol preferences list not empty.
+    Return should look like:
+        {USER_ALCOHOL_PREFERENCES_NM: [list of alcohol prefs opts...]}
+    """
+    resp_json = TEST_CLIENT.get(
+                    ep.API_PATH + ep.USER_ALCOHOL_PREFERENCES_NS).get_json()
+    assert len(resp_json[DATA]) > 0
+
+
 def test_home():
     response = TEST_CLIENT.get("/")
     assert b"Welcome to Roommate Finder!" in response.data
