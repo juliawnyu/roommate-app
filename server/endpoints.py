@@ -99,6 +99,7 @@ USER_SHARING_PREFERENCES_NS = (
 USER_SHARING_PREFERENCES_NM = 'User_sharing_preferences_list'
 sharing = 'willing to share items'
 no_sharing = 'not willing to share items'
+some_sharing = 'willing to share select items'
 
 USER_DORM_FREQUENCY = f'/User_dorm_frequency/{LIST}'
 USER_DORM_FREQUENCY_NS = (
@@ -313,11 +314,11 @@ class UserSharingPreferences(Resource):
     """
     def get(self):
         """
-        Returns list of the two possible user sharing preferences.
+        Returns list of the three possible user sharing preferences.
         """
         return {'Title': 'UserSharingPreferences',
                 'Type': 'Data',
-                'Data': {1: sharing, 2: no_sharing}}
+                'Data': {1: sharing, 2: no_sharing, 3: some_sharing}}
 
 
 @questionnaire.route(USER_DORM_FREQUENCY)
