@@ -151,12 +151,12 @@ never_dating = "never dating"
 casually = "casually dating"
 committed = "in a commited relationship"
 
-USER_ALOCHOL_PREFERENCES = f'/User_alcohol_preferences/{LIST}'
-USER_ALOCHOL_PREFERENCES_NS = (
+USER_ALCOHOL_PREFERENCES = f'/User_alcohol_preferences/{LIST}'
+USER_ALCOHOL_PREFERENCES_NS = (
     f'/{QUESTIONNAIRE_NS}'
     f'/User_alcohol_preferences/{LIST}'
     )
-USER_ALOCHOL_PREFERENCES_NM = '/User_alcohol_preferences'
+USER_ALCOHOL_PREFERENCES_NM = '/User_alcohol_preferences'
 comfortable = "comfortable with alcohol present"
 semi_comfortable = "comfortable with alcohol but in private spaces"
 not_comfortable = "not comfortable with alcohol"
@@ -348,7 +348,7 @@ class UserAnimalPreferences(Resource):
                 'Data': {1: comfortable, 2: not_comfortable}}
 
 
-@questionnaire.route(USER_ALOCHOL_PREFERENCES)
+@questionnaire.route(USER_ALCOHOL_PREFERENCES)
 class UserAlcoholPreferences(Resource):
     """
     This will get a list of a user's possible alcohol preferences.
