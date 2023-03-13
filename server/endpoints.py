@@ -152,7 +152,10 @@ casually = "casually dating"
 committed = "in a commited relationship"
 
 USER_ALOCHOL_PREFERENCES = f'/User_alcohol_preferences/{LIST}'
-USER_ALOCHOL_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/User_alcohol_preferences/{LIST}'
+USER_ALOCHOL_PREFERENCES_NS = (
+    f'/{QUESTIONNAIRE_NS}'
+    f'/User_alcohol_preferences/{LIST}'
+    )
 USER_ALOCHOL_PREFERENCES_NM = '/User_alcohol_preferences'
 comfortable = "comfortable with alcohol present"
 semi_comfortable = "comfortable with alcohol but in private spaces"
@@ -356,7 +359,11 @@ class UserAlcoholPreferences(Resource):
         """
         return {'Title': 'UserAlcoholPreferences',
                 'Type': 'Data',
-                'Data': {1: comfortable, 2: semi_comfortable, 3: not_comfortable}}
+                'Data': {
+                    1: comfortable, 
+                    2: semi_comfortable, 
+                    3: not_comfortable}
+                }
 
 
 @api.route('/endpoints')
