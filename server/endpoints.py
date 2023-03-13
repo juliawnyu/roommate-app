@@ -360,8 +360,8 @@ class UserAlcoholPreferences(Resource):
         return {'Title': 'UserAlcoholPreferences',
                 'Type': 'Data',
                 'Data': {
-                    1: comfortable, 
-                    2: semi_comfortable, 
+                    1: comfortable,
+                    2: semi_comfortable,
                     3: not_comfortable}
                 }
 
