@@ -151,6 +151,13 @@ never_dating = "never dating"
 casually = "casually dating"
 committed = "in a commited relationship"
 
+USER_ALOCHOL_PREFERENCES = f'/User_alcohol_preferences/{LIST}'
+USER_ALOCHOL_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/User_alcohol_preferences/{LIST}'
+USER_ALOCHOL_PREFERENCES_NM = '/User_alcohol_preferences'
+comfortable = "comfortable with alcohol present"
+semi_comfortable = "comfortable with alcohol but in private spaces"
+not_comfortable = "not comfortable with alcohol"
+
 
 @api.route(HELLO)
 class HelloWorld(Resource):
@@ -336,6 +343,20 @@ class UserAnimalPreferences(Resource):
         return {'Title': 'UserAnimalPreferences',
                 'Type': 'Data',
                 'Data': {1: comfortable, 2: not_comfortable}}
+
+
+@questionnaire.route(USER_ALOCHOL_PREFERENCES)
+class UserAlcoholPreferences(Resource):
+    """
+    This will get a list of a user's possible alcohol preferences.
+    """
+    def get(self):
+        """
+        Returns list of possible alcohol preferences options.
+        """
+        return {'Title': 'UserAlcoholPreferences',
+                'Type': 'Data',
+                'Data': {1: comfortable, 2: semi_comfortable, 3: not_comfortable}}
 
 
 @api.route('/endpoints')
