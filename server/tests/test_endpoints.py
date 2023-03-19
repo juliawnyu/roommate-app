@@ -253,6 +253,11 @@ def test_login():
     assert response.status == "200 OK"
 
 
+def test_logout():
+    response = TEST_CLIENT.get("/logout")
+    assert response.status == "302 FOUND"
+
+
 def test_register_get():
     response = TEST_CLIENT.get("/register")
     assert response.status == "200 OK"

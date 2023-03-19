@@ -489,7 +489,7 @@ def logout():
     """
     if request.method == 'GET':
         session['netID'] = None
-        session['_flashes'].clear()
+        session.pop('_flashes', None)
         success = "You have been logged out."
         flash(success)
         return redirect(url_for('home'))
