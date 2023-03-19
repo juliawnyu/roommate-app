@@ -476,10 +476,23 @@ def login():
         else:
             error = "Failed to log in."
             flash(error)
-            return redirect(url_for('home'))
+            return redirect(url_for('login'))
 
     elif request.method == 'GET':
         return render_template('login.html')
+
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    """
+    The logout function
+    """
+    if request.method == 'GET':
+        session['netID'] = None
+        session['_flashes'].clear()
+        success = "You have been logged out."
+        flash(success)
+        return redirect(url_for('home'))
 
 
 @app.route('/user_homepage')
