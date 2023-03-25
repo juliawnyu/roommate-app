@@ -43,11 +43,11 @@ class DB_Manager:
                     'grade': grade}
         self.users.insert_one(new_user)
 
-    def add_quiz_results(self, netID, sleep, guests, social):
+    def add_quiz_results(self, netID, sleep, guests, clean):
         quiz_results = {
             'sleep': sleep,
             'guests': guests,
-            'social': social
+            'clean': clean
         }
 
         self.users.update_one(

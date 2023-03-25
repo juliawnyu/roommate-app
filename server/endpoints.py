@@ -550,8 +550,8 @@ def questionnaire():
         netID = session['netID']
         sleep = request.form['sleep']
         guests = request.form['guests']
-        social = request.form['social']
-        db_manager.add_quiz_results(netID, sleep, guests, social)
+        clean = request.form['clean']
+        db_manager.add_quiz_results(netID, sleep, guests, clean)
         return redirect(url_for('results'))
 
     elif request.method == 'GET':
