@@ -546,13 +546,12 @@ def questionnaire():
     """
     app route for the roommate quiz we use for matching
     """
-
-    # in progress - doesn't change db
     if request.method == 'POST':
-        # sleep = request.form['sleep']
-        # guests = request.form['guests']
-        # social = request.form['social']
-        # db_manager.add_quiz(sleep, guests, social)
+        netID = session['netID']
+        sleep = request.form['sleep']
+        guests = request.form['guests']
+        social = request.form['social']
+        db_manager.add_quiz_results(netID, sleep, guests, social)
         return redirect(url_for('results'))
 
     elif request.method == 'GET':

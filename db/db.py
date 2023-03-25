@@ -43,16 +43,17 @@ class DB_Manager:
                     'grade': grade}
         self.users.insert_one(new_user)
 
-    # in progress
-    def add_quiz(self, sleep, guests, social):
-        # quiz_users = {
-        #     'sleep': sleep,
-        #     'guests': guests,
-        #     'social': social
-        # }
+    def add_quiz_results(self, netID, sleep, guests, social):
+        quiz_results = {
+            'sleep': sleep,
+            'guests': guests,
+            'social': social
+        }
 
-        # self.users.insert_one(quiz_users)
-        return
+        self.users.update_one(
+            {'netID': netID},
+            {'$set': {'quiz_results': quiz_results}}
+        )
 
     def remove_user(self, netID):
         self.users.delete_one({'netID': netID})
