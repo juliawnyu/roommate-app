@@ -551,7 +551,8 @@ def questionnaire():
         sleep = request.form['sleep']
         guests = request.form['guests']
         clean = request.form['clean']
-        db_manager.add_quiz_results(netID, sleep, guests, clean)
+        gender = request.form['gender']
+        db_manager.add_quiz_results(netID, sleep, guests, clean, gender)
         return redirect(url_for('results'))
 
     elif request.method == 'GET':
