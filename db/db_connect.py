@@ -43,3 +43,13 @@ def del_one(collection, filt, db=DORM_DB):
     Find with filter and delete first doc found.
     """
     client[db][collection].delete_one(filt)
+
+
+def fetch_all(collection, db=DORM_DB):
+    """
+    Find and return first all docs found.
+    """
+    ret = []
+    for doc in client[db][collection].find():
+        ret.append(doc)
+    return ret
