@@ -29,6 +29,12 @@ def insert_one(collection, doc, db=DORM_DB):
     """
     client[db][collection].insert_one(doc)
 
+def insert_all(collection, doc, db=DORM_DB):
+    """
+    Insert all dos into collection.
+    """
+    client[db][collection].insert()
+
 
 def fetch_one(collection, filt, db=DORM_DB):
     """
