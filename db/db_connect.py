@@ -28,6 +28,7 @@ def insert_one(collection, doc, db=DORM_DB):
     Insert single doc into collection.
     """
     client[db][collection].insert_one(doc)
+    
 
 def insert_all(collection, doc, db=DORM_DB):
     """
