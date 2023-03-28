@@ -210,7 +210,8 @@ model = api.model('Cooking pref Model',
                   {'cook_pref': fields.String(required=True,
                                               description="Cooking pref "
                                                           "of the person",
-                                              help="Name cannot be blank.")})
+                                              help="cook_pref"
+                                                   " cannot be blank.")})
 
 list_of_cooking_pref = {}
 
