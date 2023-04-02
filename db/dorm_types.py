@@ -28,3 +28,11 @@ def del_dorm_type(type_name):
 
 def dorm_type_exists(type_name):
     return type_name in dorm_types
+
+
+def get_dorm_types_dict():
+    return dorm_types
+
+
+def get_dorm_types_():
+    return dorm_types.keys()

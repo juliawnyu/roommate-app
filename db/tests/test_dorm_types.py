@@ -19,3 +19,9 @@ def test_del_dorm_type():
     assert dtyp.dorm_type_exists(NEW_DORM_TYPE) is not False
     dtyp.del_dorm_type(NEW_DORM_TYPE)
     assert dtyp.dorm_type_exists(NEW_DORM_TYPE) is False
+
+
+@pytest.fixture(scope='function')
+def test_get_dorm_types_dict():
+    dorm_types_dict = dtyp.get_dorm_types_dict()
+    assert isinstance(dorm_types_dict, dict)
