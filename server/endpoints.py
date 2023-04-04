@@ -68,8 +68,8 @@ USER_COMMON_BEDTIMES = f'/User_common_bedtimes/{LIST}'
 USER_COMMON_BEDTIMES_NS = f'/{QUESTIONNAIRE_NS}/User_common_bedtimes/{LIST}'
 USER_COMMON_BEDTIMES_NM = 'User_common_bedtimes_list'
 early = '7-9pm'
-late = '10-12'
-very_late = '1+'
+late = '10pm-12am'
+very_late = '1am+'
 
 USER_GUEST_PREFERENCES = f'/User_guest_preferences/{LIST}'
 USER_GUEST_PREFERENCES_NS = (
