@@ -22,6 +22,10 @@ dorms = {
     'handle3': {
         NAME: 'Carlyle Court',
         LOCATION: 'Union Square West'
+    },
+    'handle4': {
+        NAME: 'Gramercy',
+        LOCATION: 'Gramercy Park'
     }
 }
 
