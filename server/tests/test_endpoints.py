@@ -309,3 +309,25 @@ def test_alumni():
 def test_othmer():
     response = TEST_CLIENT.get("/othmer")
     assert response.status == "200 OK"
+
+
+def test_clean_up_json():
+    """
+    this function makes sure that the clean_up_json() method works
+    takes an example json response from an endpoint and parses to list
+    """
+    json_resp = {
+        'Title': 'UserDormFrequency',
+        'Type': 'Data',
+        'Data': {
+            1: 'just to sleep',
+            2: 'often',
+            3: 'always'
+        }
+    }
+    cleaned_up_json_resp = ep.clean_up_json(json_resp)
+    assert isinstance(cleaned_up_json_resp, list)
+    assert cleaned_up_json_resp is not None
+    assert cleaned_up_json_resp[0] == 'just to sleep'
+    assert cleaned_up_json_resp[1] == 'often'
+    assert cleaned_up_json_resp[2] == 'always'

@@ -568,6 +568,18 @@ def register():
         return render_template('register.html')
 
 
+def clean_up_json(resp):
+    """
+    function to clean up messy json response that endpoints return.
+    takes dictionary and turns into list of responses.
+    """
+    data = resp['Data']
+    resp_lst = []
+    for item in data.keys():
+        resp_lst.append(data[item])
+    return resp_lst
+
+
 @app.route('/questionnaire', methods=['GET', 'POST'])
 def questionnaire():
     """
