@@ -595,7 +595,17 @@ def questionnaire():
         return redirect(url_for('results'))
 
     elif request.method == 'GET':
-        return render_template('questionnaire.html')
+        sleep_options_lst = clean_up_json(UserCommonBedtimes().get())
+        guests_options_lst = clean_up_json(UserGuestPreferences().get())
+        clean_options_lst = clean_up_json(UserCleaningPreferences().get())
+        gender_options_lst = clean_up_json(UserGenderPreference().get())
+        return render_template(
+            'questionnaire.html',
+            sleep_options=sleep_options_lst,
+            guests_options=guests_options_lst,
+            clean_options=clean_options_lst,
+            gender_options=gender_options_lst
+        )
 
 
 @app.route('/results')
