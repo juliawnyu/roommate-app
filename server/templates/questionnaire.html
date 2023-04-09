@@ -10,23 +10,20 @@
 </form>
     <h1>Take our Questionnaire!</h1>
     <form method="POST">
-      <label for="sleep" class="form-label">What time do you usually go to bed?</label>
-      <select type="text" name="sleep" class="form-control" required>
-		<option value="super early">6pm-9pm</option>
-		<option value="early">9pm-11pm</option>
-        <option value="normal">11pm-1am</option>
-        <option value="late">1am-3am</option>
-        <option value="super late">3am-5am</option>
-	  </select>
+        <label for="sleep" class="form-label">What time do you usually go to bed?</label>
+        <select type="text" name="sleep" class="form-control" required>
+            {% for opt in sleep_options %}
+            <option> {{opt}}</option>
+            {% endfor %}
+        </select>
+
       <br>
       <label for="guests" class="form-label">How often do you have guests over?</label>
-		<select type="text" name="guests" class="form-control" required>
-		<option value="never">never</option>
-		<option value="rarely">rarely</option>
-        <option value="sometimes">sometimes</option>
-        <option value="often">often</option>
-        <option value="very often">very often</option>
-			</select>
+        <select type="guests" name="sleep" class="form-control" required>
+            {% for opt in guests_options %}
+            <option> {{opt}}</option>
+            {% endfor %}
+        </select>
       <br>
       <label for="clean" class="form-label">How clean do you like your room to be?</label>
       <select type="text" name="clean" class="form-control" required>
