@@ -616,6 +616,14 @@ def results():
     return render_template('results.html')
 
 
+@app.route('/browse')
+def browse():
+    """
+    app route for browsing potential roommate matches
+    """
+    return render_template('browse.html')
+
+
 @app.route('/clark')
 def clark_info():
     """
