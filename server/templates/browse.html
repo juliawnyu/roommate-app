@@ -5,11 +5,14 @@
     <title>Browsing Roommates for {{session.netID}}</title>
 </head>
 <body>
-<!-- <h1>Your questionnaire answers</h1>
-    {% for ans in answers %}
-        <answer> {{ans}}</answer>
-    {% endfor %} -->
+<h1>Your questionnaire answers</h1>
+    {% for ans in quiz_results %}
+        <answer> {{ans}}: {{quiz_results[ans]}}</answer>
+        <br>
+    {% endfor %}
 
+<h1>Roommate matches</h1>
+<!-- work in progress -->
 
 <h2>See dorm info</h2>
 <h3>Brooklyn dorms</h3>

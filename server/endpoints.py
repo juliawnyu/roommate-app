@@ -621,7 +621,9 @@ def browse():
     """
     app route for browsing potential roommate matches
     """
-    return render_template('browse.html')
+    user = db_manager.get_user(session['netID'])
+    quiz_results = user.get('quiz_results')
+    return render_template('browse.html', quiz_results=quiz_results)
 
 
 @app.route('/clark')
