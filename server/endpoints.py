@@ -169,6 +169,7 @@ USER_CONFRONTATION_STYLE_NS = (
     )
 USER_CONFRONTATION_STYLE_NM = '/User_confrontation_style'
 
+
 @api.route(HELLO)
 class HelloWorld(Resource):
     """
