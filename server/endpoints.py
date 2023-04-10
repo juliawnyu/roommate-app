@@ -173,7 +173,6 @@ avoiding = "completely evades conflict"
 compromising = "attempts to reach middle ground"
 
 
-
 @api.route(HELLO)
 class HelloWorld(Resource):
     """
