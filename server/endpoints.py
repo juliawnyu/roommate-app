@@ -168,6 +168,10 @@ USER_CONFRONTATION_STYLE_NS = (
     f'/User_confrontation_style/{LIST}'
     )
 USER_CONFRONTATION_STYLE_NM = '/User_confrontation_style'
+accommodating = "putting others before yourself"
+avoiding = "completely evades conflict"
+compromising = "attempts to reach middle ground"
+
 
 
 @api.route(HELLO)
