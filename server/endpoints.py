@@ -162,6 +162,12 @@ comfortable = "comfortable with alcohol present"
 semi_comfortable = "comfortable with alcohol but in private spaces"
 not_comfortable = "not comfortable with alcohol"
 
+USER_CONFRONTATION_STYLE = f'/User_confrontation_style/{LIST}'
+USER_CONFRONTATION_STYLE_NS = (
+    f'/{QUESTIONNAIRE_NS}'
+    f'/User_confrontation_style/{LIST}'
+    )
+USER_CONFRONTATION_STYLE_NM = '/User_confrontation_style'
 
 @api.route(HELLO)
 class HelloWorld(Resource):
