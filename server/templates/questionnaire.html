@@ -49,6 +49,13 @@
             {% endfor %}
         </select>
       <br>
+        <label for="sharing" class="form-label">Are you comfortable with sharing household supplies??</label>
+        <select type="sharing" name="sharing" class="form-control" required>
+            {% for opt in sharing_options %}
+            <option> {{opt}}</option>
+            {% endfor %}
+        </select>
+      <br>
 
       <input type="submit" value = "submit" />
 	</form>

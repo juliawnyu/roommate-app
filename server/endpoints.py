@@ -623,13 +623,15 @@ def questionnaire():
         clean_options_lst = clean_up_json(UserCleaningPreferences().get())
         gender_options_lst = clean_up_json(UserGenderPreference().get())
         animal_options_lst = clean_up_json(UserAnimalPreferences().get())
+        sharing_options_lst = clean_up_json(UserSharingPreferences().get())
         return render_template(
             'questionnaire.html',
             sleep_options=sleep_options_lst,
             guests_options=guests_options_lst,
             clean_options=clean_options_lst,
             gender_options=gender_options_lst,
-            animal_options=animal_options_lst
+            animal_options=animal_options_lst,
+            sharing_options=sharing_options_lst
         )
 
 
