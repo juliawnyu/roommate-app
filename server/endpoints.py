@@ -607,13 +607,15 @@ def questionnaire():
         clean = request.form['clean']
         gender = request.form['gender']
         animal = request.form['animal']
+        sharing = request.form['sharing']
         db_manager.add_quiz_results(
             netID,
             sleep,
             guests,
             clean,
             gender,
-            animal
+            animal,
+            sharing
         )
         return redirect(url_for('results'))
 
