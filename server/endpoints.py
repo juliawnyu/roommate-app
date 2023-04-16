@@ -383,12 +383,12 @@ class UserAnimalPreferences(Resource):
         """
         return {'Title': 'UserAnimalPreferences',
                 'Type': 'Data',
-                'Data': 
-                {
-                    1: comfortable_with_animal, 
-                    2: not_comfortable_with_animal
+                'Data':
+                    {
+                        1: comfortable_with_animal,
+                        2: not_comfortable_with_animal
+                    }
                 }
-            }
 
 
 @questionnaire.route(USER_ALCOHOL_PREFERENCES)
@@ -608,11 +608,11 @@ def questionnaire():
         gender = request.form['gender']
         animal = request.form['animal']
         db_manager.add_quiz_results(
-            netID, 
+            netID,
             sleep,
-            guests, 
-            clean, 
-            gender, 
+            guests,
+            clean,
+            gender,
             animal
         )
         return redirect(url_for('results'))
