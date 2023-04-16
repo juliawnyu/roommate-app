@@ -42,6 +42,14 @@
         </select>
       <br>
 
+      <label for="animal" class="form-label">Are you comfortable living with a service animal?</label>
+        <select type="gender" name="gender" class="form-control" required>
+            {% for opt in animal_options %}
+            <option> {{opt}}</option>
+            {% endfor %}
+        </select>
+      <br>
+
       <input type="submit" value = "submit" />
 	</form>
 </body>

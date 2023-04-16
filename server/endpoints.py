@@ -127,8 +127,8 @@ USER_ANIMAL_PREFERENCES_NS = (
         f'/User_animal_preference/{LIST}'
     )
 USER_ANIMAL_PREFERENCES_NM = '/User_animal_preferences_list'
-comfortable = "comfortable with service animals"
-not_comfortable = "uncomfortable with service animals"
+comfortable_with_animal = "comfortable with service animals"
+not_comfortable_with_animal = "uncomfortable with service animals"
 
 COOKING_PREFERENCES = f'/Cooking_preference/{LIST}'
 COOKING_PREFERENCES_ADD = f'/Cooking_preference_add/{LIST}'
@@ -383,7 +383,7 @@ class UserAnimalPreferences(Resource):
         """
         return {'Title': 'UserAnimalPreferences',
                 'Type': 'Data',
-                'Data': {1: comfortable, 2: not_comfortable}}
+                'Data': {1: comfortable_with_animal, 2: not_comfortable_with_animal}}
 
 
 @questionnaire.route(USER_ALCOHOL_PREFERENCES)
@@ -609,12 +609,14 @@ def questionnaire():
         guests_options_lst = clean_up_json(UserGuestPreferences().get())
         clean_options_lst = clean_up_json(UserCleaningPreferences().get())
         gender_options_lst = clean_up_json(UserGenderPreference().get())
+        animal_options_lst = clean_up_json(UserAnimalPreferences().get())
         return render_template(
             'questionnaire.html',
             sleep_options=sleep_options_lst,
             guests_options=guests_options_lst,
             clean_options=clean_options_lst,
-            gender_options=gender_options_lst
+            gender_options=gender_options_lst,
+            animal_options=animal_options_lst
         )
 
 
