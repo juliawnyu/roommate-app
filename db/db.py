@@ -50,6 +50,7 @@ class DB_Manager:
             'clean': clean,
             'gender': gender,
             'animal': animal,
+            'sharing': animal,
         }
 
         self.users.update_one(
