@@ -407,7 +407,7 @@ class UserAlcoholPreferences(Resource):
                     2: semi_comfortable,
                     3: not_comfortable}
                 }
-    
+
 
 @questionnaire.route(USER_CONFRONTATION_STYLE)
 class UserConfrontationStyle(Resource):
