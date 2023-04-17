@@ -407,6 +407,23 @@ class UserAlcoholPreferences(Resource):
                     2: semi_comfortable,
                     3: not_comfortable}
                 }
+    
+@questionnaire.route(USER_CONFRONTATION_STYLE)
+class UserConfrontationStyle(Resource):
+    """
+    This will get a list of a user's confrontation style preferences.
+    """
+    def get(self):
+        """
+        Returns list of possible confrontation style preferences options.
+        """
+        return {'Title': 'UserConfrontationStyle',
+                'Type': 'Data',
+                'Data': {
+                    1: accommodating,
+                    2: avoiding,
+                    3: compromising}
+                }
 
 
 @api.route('/endpoints')
