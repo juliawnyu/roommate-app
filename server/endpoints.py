@@ -500,6 +500,9 @@ class MainMenu(Resource):
                     '8': {'url': f'/{API_PATH}{USER_GENDER_PREFERENCE}',
                           'method': 'get',
                           'text': 'List User Gender Preferences'},
+                    '9': {'url': f'/{API_PATH}{USER_CONFRONTATION_STYLE}',
+                          'method': 'get',
+                          'text': 'List User Confrontation Styles'},
                     'X': {'text': 'Exit'},
                 }}
 
