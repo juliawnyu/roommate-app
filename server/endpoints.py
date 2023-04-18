@@ -534,8 +534,10 @@ def login():
             session['netID'] = netID
             success = "Logged in successfully!"
             flash(success)
-            # should be updated to post-login profile / account page
-            return redirect(url_for('user_homepage'))
+            if netID == "admin":
+                return redirect(url_for('admin_page'))
+            else:
+                return redirect(url_for('user_homepage'))
         else:
             error = "Failed to log in."
             flash(error)
@@ -556,6 +558,14 @@ def logout():
         success = "You have been logged out."
         flash(success)
         return redirect(url_for('home'))
+
+
+@app.route('/admin_page')
+def admin_page():
+    """
+    The admin page intended for devs.
+    """
+    return render_template('admin_page.html')
 
 
 @app.route('/user_homepage')
