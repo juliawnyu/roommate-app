@@ -35,6 +35,9 @@ class DB_Manager:
             return search
         return False
 
+    def get_all(self):
+        return list(self.users.find({}))
+
     def add_user(self, netID, password, grade):
         new_user = {'netID': netID,
                     'password': bcrypt.hashpw(

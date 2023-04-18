@@ -10,7 +10,20 @@
 
 
 <h1>Users Database</h1>
-
+<table>
+    <tr>
+        <th>NetID</th>
+        <th>Grade</th>
+        <th>Quiz Results</th>
+    </tr>
+    {% for user in users_list %}
+        <tr>
+            <td> {{user.netID}} </td>
+            <td> {{user.grade}} </td>
+            <td> {{user.quiz_results}} </td>
+        </tr>
+    {% endfor %}
+</table>
 
 <h3>Log Out</h3>
 <div>
