@@ -49,9 +49,16 @@
             {% endfor %}
         </select>
       <br>
-        <label for="sharing" class="form-label">Are you comfortable with sharing household supplies??</label>
+        <label for="sharing" class="form-label">Are you comfortable sharing household supplies?</label>
         <select type="sharing" name="sharing" class="form-control" required>
             {% for opt in sharing_options %}
+            <option> {{opt}}</option>
+            {% endfor %}
+        </select>
+      <br>
+        <label for="shower" class="form-label">What time do you usually shower?</label>
+        <select type="shower" name="shower" class="form-control" required>
+            {% for opt in shower_options %}
             <option> {{opt}}</option>
             {% endfor %}
         </select>

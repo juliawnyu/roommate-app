@@ -275,7 +275,7 @@ class AddCooking(Resource):
 
 
 @questionnaire.route(SHOWER_TIMES)
-class ShowerTimes(Resource):
+class UserShowerPreferences(Resource):
     """
     This will get a list of when users like to shower
     """
@@ -283,7 +283,7 @@ class ShowerTimes(Resource):
         """
         Returns list of possible shower times.
         """
-        return {'Title': 'ShowerTimes',
+        return {'Title': 'UserShowerPreferences',
                 'Type': 'Data',
                 'Data': {1: morning, 2: midday, 3: night}}
 
@@ -641,6 +641,7 @@ def questionnaire():
         gender = request.form['gender']
         animal = request.form['animal']
         sharing = request.form['sharing']
+        shower = request.form['shower']
         db_manager.add_quiz_results(
             netID,
             sleep,
@@ -648,7 +649,8 @@ def questionnaire():
             clean,
             gender,
             animal,
-            sharing
+            sharing,
+            shower
         )
         return redirect(url_for('results'))
 
@@ -659,6 +661,7 @@ def questionnaire():
         gender_options_lst = clean_up_json(UserGenderPreference().get())
         animal_options_lst = clean_up_json(UserAnimalPreferences().get())
         sharing_options_lst = clean_up_json(UserSharingPreferences().get())
+        shower_options_lst = clean_up_json(UserShowerPreferences().get())
         return render_template(
             'questionnaire.html',
             sleep_options=sleep_options_lst,
@@ -666,7 +669,8 @@ def questionnaire():
             clean_options=clean_options_lst,
             gender_options=gender_options_lst,
             animal_options=animal_options_lst,
-            sharing_options=sharing_options_lst
+            sharing_options=sharing_options_lst,
+            shower_options=shower_options_lst
         )
 
 
