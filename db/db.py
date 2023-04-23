@@ -77,7 +77,7 @@ class DB_Manager:
         if bcrypt.checkpw(password.encode(), user['password']):
             return True
         return False
-    
+
     def compare_answers(user_results, other_results):
         '''
         Helper function that directly compares quiz results.
@@ -89,7 +89,7 @@ class DB_Manager:
             if user_results[key] == other_results[key]:
                 common_answers.append(key)
         return common_answers
-    
+
     def compare_users(self, netID):
         '''
         Compares user with others to find matches.
@@ -103,7 +103,7 @@ class DB_Manager:
             if curr_usr is not user_in_session:
                 curr_usr_quiz_results = curr_usr.get('quiz_results')
                 common_answers = self.compare_answers(
-                    user_in_session_quiz_results, 
+                    user_in_session_quiz_results,
                     curr_usr_quiz_results
                 )
                 if common_answers:
