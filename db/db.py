@@ -63,6 +63,9 @@ class DB_Manager:
             {'$set': {'quiz_results': quiz_results}}
         )
 
+    def add_matched_users(self, netID, matched_users):
+        return None
+
     def remove_user(self, netID):
         self.users.delete_one({'netID': netID})
 
@@ -71,6 +74,40 @@ class DB_Manager:
         if bcrypt.checkpw(password.encode(), user['password']):
             return True
         return False
+    
+    def compare_answers(user_results, other_results):
+        '''
+        Helper function that directly compares quiz results.
+        Loops through both dictionaries and compares answers.
+        Returns list containing the keys of the common results.
+        '''
+        common_answers = []
+        for key in user_results:
+            if user_results[key] == other_results[key]:
+                common_answers.append(key)
+        return common_answers
+    
+    def compare_users(self, netID):
+        '''
+        Compares user with others to find matches.
+        If one quiz answer is the same, adds them to match list.
+        '''
+        user_in_session = self.get_user(netID)
+        user_in_session_quiz_results = user_in_session.get('quiz_results')
+        users = self.get_all()
+        matched_users = {}
+        for curr_usr in users:
+            if curr_usr is not user_in_session:
+                curr_usr_quiz_results = curr_usr.get('quiz_results')
+                common_answers = self.compare_answers(
+                    user_in_session_quiz_results, 
+                    curr_usr_quiz_results
+                )
+                if common_answers:
+                    matched_users[curr_usr.get('netID')] = common_answers
+                    self.add_matched_users(netID, matched_users)
+                else:
+                    return False
 
 # test code
 # if MONGO_ENV == "LOCAL":
