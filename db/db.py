@@ -64,7 +64,10 @@ class DB_Manager:
         )
 
     def add_matched_users(self, netID, matched_users):
-        return None
+        self.users.update_one(
+            {'netID': netID},
+            {'$set': {'matched_users': matched_users}}
+        )
 
     def remove_user(self, netID):
         self.users.delete_one({'netID': netID})
