@@ -93,7 +93,9 @@ class DB_Manager:
     def compare_users(self, netID):
         '''
         Compares user with others to find matches.
-        If one quiz answer is the same, adds them to match list.
+        If 1+ quiz answer is the same, adds them to matched_users dictionary.
+        Keys of matched dictionary are netIDs of users they share answers with.
+        Key items is the list of common quiz_results keys.
         '''
         user_in_session = self.get_user(netID)
         user_in_session_quiz_results = user_in_session.get('quiz_results')
