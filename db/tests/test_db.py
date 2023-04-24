@@ -1,8 +1,6 @@
 import db.db as dbc
-import pymongo as pym
 
 import pytest
-import os
 
 TEST_DB = dbc.USERS
 TEST_NETID = 'bm2815'
