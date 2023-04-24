@@ -664,6 +664,7 @@ def questionnaire():
         animal_options_lst = clean_up_json(UserAnimalPreferences().get())
         sharing_options_lst = clean_up_json(UserSharingPreferences().get())
         shower_options_lst = clean_up_json(UserShowerPreferences().get())
+        confrontation_options_lst = clean_up_json(UserConfrontationStyle().get())
         return render_template(
             'questionnaire.html',
             sleep_options=sleep_options_lst,
@@ -672,7 +673,8 @@ def questionnaire():
             gender_options=gender_options_lst,
             animal_options=animal_options_lst,
             sharing_options=sharing_options_lst,
-            shower_options=shower_options_lst
+            shower_options=shower_options_lst,
+            confrontation_options=confrontation_options_lst
         )
 
 
