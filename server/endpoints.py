@@ -642,6 +642,7 @@ def questionnaire():
         animal = request.form['animal']
         sharing = request.form['sharing']
         shower = request.form['shower']
+        confrontation = request.form['confrontation']
         db_manager.add_quiz_results(
             netID,
             sleep,
@@ -650,7 +651,8 @@ def questionnaire():
             gender,
             animal,
             sharing,
-            shower
+            shower,
+            confrontation
         )
         return redirect(url_for('results'))
 
