@@ -566,9 +566,10 @@ def admin_page():
     The admin page intended for devs.
     """
     if session['netID'] != 'admin':
+        session['netID'] = None
+        session.pop('_flashes', None)
         return render_template('home.html')
     users_list = db_manager.get_all()
-    print(users_list)
     return render_template('admin_page.html', users_list=users_list)
 
 
@@ -577,6 +578,9 @@ def user_homepage():
     """
     The landing page for our app.
     """
+    if session['netID'] is None:
+        session.pop('_flashes', None)
+        return render_template('home.html')
     return render_template('user_homepage.html')
 
 
