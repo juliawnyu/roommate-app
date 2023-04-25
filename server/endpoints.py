@@ -565,6 +565,8 @@ def admin_page():
     """
     The admin page intended for devs.
     """
+    if session['netID'] != 'admin':
+        return render_template('home.html')
     users_list = db_manager.get_all()
     print(users_list)
     return render_template('admin_page.html', users_list=users_list)
