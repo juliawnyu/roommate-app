@@ -648,7 +648,6 @@ def questionnaire():
         animal = request.form['animal']
         sharing = request.form['sharing']
         shower = request.form['shower']
-        confrontation = request.form['confrontation']
         db_manager.add_quiz_results(
             netID,
             sleep,
@@ -657,8 +656,7 @@ def questionnaire():
             gender,
             animal,
             sharing,
-            shower,
-            confrontation
+            shower
         )
         return redirect(url_for('results'))
 
@@ -670,7 +668,6 @@ def questionnaire():
         animal_options_lst = clean_up_json(UserAnimalPreferences().get())
         sharing_options_lst = clean_up_json(UserSharingPreferences().get())
         shower_options_lst = clean_up_json(UserShowerPreferences().get())
-        confront_options_lst = clean_up_json(UserConfrontationStyle().get())
         return render_template(
             'questionnaire.html',
             sleep_options=sleep_options_lst,
@@ -680,7 +677,6 @@ def questionnaire():
             animal_options=animal_options_lst,
             sharing_options=sharing_options_lst,
             shower_options=shower_options_lst,
-            confront_options=confront_options_lst
         )
 
 
