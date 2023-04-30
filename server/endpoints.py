@@ -182,33 +182,6 @@ class DatingPreferences(Resource):
                          3: never_dating}}
 
 
-model = api.model('Cooking pref Model',
-                  {'cook_pref': fields.String(required=True,
-                                              description="Cooking pref "
-                                                          "of the person",
-                                              help="cook_pref"
-                                                   " cannot be blank.")})
-
-list_of_cooking_pref = {}
-
-
-@questionnaire.route("/<int:id>")
-class CookTest(Resource):
-    def get(self, id):
-        return {'Title': 'CookPreferences',
-                'Type': 'Data',
-                'Data': {1: always_cooking, 2: sometimes_cooking,
-                         3: never_cook}}
-
-    @api.expect(model)
-    def post(self, id):
-        list_of_cooking_pref[id] = request.json['cook_pref']
-        return {
-            "status": "New person added",
-            "name": list_of_cooking_pref[id]
-             }
-
-
 @questionnaire.route(COOKING_PREFERENCES)
 class CookPreferences(Resource):
     """
