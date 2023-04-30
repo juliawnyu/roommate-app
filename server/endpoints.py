@@ -166,21 +166,6 @@ class UserGrades(Resource):
         return flds.ROOMMATE_FIELDS[flds.USER_GRADES]
 
 
-@questionnaire.route(DATING_PREFERENCES)
-class DatingPreferences(Resource):
-    """
-    This will get a list of dating preferences.
-    """
-    def get(self):
-        """
-        Returns list of possible dating preferences.
-        """
-        return {'Title': 'DatingPreferences',
-                'Type': 'Data',
-                'Data': {1: committed, 2: casually,
-                         3: never_dating}}
-
-
 @questionnaire.route(COOKING_PREFERENCES)
 class CookPreferences(Resource):
     """
@@ -540,6 +525,7 @@ def questionnaire():
         animal = request.form['animal']
         sharing = request.form['sharing']
         shower = request.form['shower']
+        alcohol = request.form['alcohol']
         db_manager.add_quiz_results(
             netID,
             sleep,
@@ -548,7 +534,8 @@ def questionnaire():
             gender,
             animal,
             sharing,
-            shower
+            shower,
+            alcohol
         )
         return redirect(url_for('results'))
 
@@ -560,6 +547,7 @@ def questionnaire():
         animal_options_lst = clean_up_json(UserAnimalPreferences().get())
         sharing_options_lst = clean_up_json(UserSharingPreferences().get())
         shower_options_lst = clean_up_json(UserShowerPreferences().get())
+        alcohol_options_lst = clean_up_json(UserAlcoholPreferences().get())
         return render_template(
             'questionnaire.html',
             sleep_options=sleep_options_lst,
@@ -569,6 +557,7 @@ def questionnaire():
             animal_options=animal_options_lst,
             sharing_options=sharing_options_lst,
             shower_options=shower_options_lst,
+            alcohol_options=alcohol_options_lst,
         )
 
 

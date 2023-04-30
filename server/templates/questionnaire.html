@@ -63,6 +63,13 @@
             {% endfor %}
         </select>
       <br>
+        <label for="alcohol" class="form-label">How do you feel about alcohol in your living space?</label>
+        <select type="alcohol" name="alcohol" class="form-control" required>
+            {% for opt in alcohol_options %}
+            <option> {{opt}}</option>
+            {% endfor %}
+        </select>
+      <br>
 
       <input type="submit" value = "submit" />
 	</form>
