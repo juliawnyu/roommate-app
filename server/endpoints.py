@@ -10,7 +10,6 @@ from flask_session import Session
 import db.db as db
 import db.fields as flds
 import db.users as usr
-import db.quiz as quizDB
 import secrets
 
 
@@ -192,22 +191,6 @@ class CookPreferences(Resource):
         Returns list of common cooking preferences.
         """
         return flds.ROOMMATE_FIELDS[flds.USER_COOKING_PREFERENCES]
-
-
-user_quiz = quizDB.COOKING = fields.String
-
-
-@questionnaire.route(COOKING_PREFERENCES_ADD)
-class AddCooking(Resource):
-    """
-    adds user cooking preferences.
-    """
-    @api.expect(user_quiz)
-    def post(self):
-        """
-        Adding a user cookinf pref.
-        """
-        print(f'{request.json=}')
 
 
 @questionnaire.route(SHOWER_TIMES)
