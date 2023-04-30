@@ -8,6 +8,7 @@ from flask import Flask, render_template, request,\
 from flask_restx import Resource, Api, Namespace, fields
 from flask_session import Session
 import db.db as db
+import db.fields as flds
 import db.users as usr
 import db.quiz as quizDB
 import secrets
@@ -59,17 +60,10 @@ USER_ADD = f'/{USERS_NS}/{ADD}'
 USER_GRADES = f'/User_grades/{LIST}'
 USER_GRADES_NS = f'/{QUESTIONNAIRE_NS}/User_grades/{LIST}'
 USER_GRADES_NM = 'User_grades_list'
-freshman = 'freshman'
-sophomore = 'sophomore'
-junior = 'junior'
-senior = 'senior'
 
 USER_COMMON_BEDTIMES = f'/User_common_bedtimes/{LIST}'
 USER_COMMON_BEDTIMES_NS = f'/{QUESTIONNAIRE_NS}/User_common_bedtimes/{LIST}'
 USER_COMMON_BEDTIMES_NM = 'User_common_bedtimes_list'
-early = '7-9pm'
-late = '10pm-12am'
-very_late = '1am+'
 
 USER_GUEST_PREFERENCES = f'/User_guest_preferences/{LIST}'
 USER_GUEST_PREFERENCES_NS = (
@@ -77,9 +71,6 @@ USER_GUEST_PREFERENCES_NS = (
         f'/User_guest_preferences/{LIST}'
     )
 USER_GUEST_PREFERENCES_NM = 'User_guest_preferences_list'
-no_guests = 'no guests'
-few_guests = 'a few guests'
-lots_of_guests = 'any amount of guests'
 
 USER_CLEANING_PREFERENCES = f'/User_cleaning_preferences/{LIST}'
 USER_CLEANING_PREFERENCES_NS = (
@@ -87,9 +78,6 @@ USER_CLEANING_PREFERENCES_NS = (
         f'/User_cleaning_preferences/{LIST}'
     )
 USER_CLEANING_PREFERENCES_NM = 'User_cleaning_preferences_list'
-clean_tidy = 'clean and tidy'
-clean_messy = 'clean but messy'
-messy = 'messy'
 
 USER_SHARING_PREFERENCES = f'/User_sharing_preferences/{LIST}'
 USER_SHARING_PREFERENCES_NS = (
@@ -97,9 +85,6 @@ USER_SHARING_PREFERENCES_NS = (
         f'/User_sharing_preferences/{LIST}'
     )
 USER_SHARING_PREFERENCES_NM = 'User_sharing_preferences_list'
-sharing = 'willing to share items'
-no_sharing = 'not willing to share items'
-some_sharing = 'willing to share select items'
 
 USER_DORM_FREQUENCY = f'/User_dorm_frequency/{LIST}'
 USER_DORM_FREQUENCY_NS = (
@@ -107,9 +92,6 @@ USER_DORM_FREQUENCY_NS = (
         f'/User_dorm_frequency/{LIST}'
     )
 USER_DORM_FREQUENCY_NM = '/User_dorm_frequency_list'
-never = 'just to sleep'
-often = 'often'
-always = 'always'
 
 USER_GENDER_PREFERENCE = f'/User_gender_preference/{LIST}'
 USER_GENDER_PREFERENCE_NS = (
@@ -117,9 +99,6 @@ USER_GENDER_PREFERENCE_NS = (
         f'/User_gender_preference/{LIST}'
     )
 USER_GENDER_PREFERENCE_NM = '/User_gender_preference_list'
-male = 'male'
-female = 'female'
-any_gender = 'any'
 
 USER_ANIMAL_PREFERENCES = f'/User_animal_preference/{LIST}'
 USER_ANIMAL_PREFERENCES_NS = (
@@ -127,23 +106,15 @@ USER_ANIMAL_PREFERENCES_NS = (
         f'/User_animal_preference/{LIST}'
     )
 USER_ANIMAL_PREFERENCES_NM = '/User_animal_preferences_list'
-comfortable_with_animal = "comfortable with service animals"
-not_comfortable_with_animal = "uncomfortable with service animals"
 
 COOKING_PREFERENCES = f'/Cooking_preference/{LIST}'
 COOKING_PREFERENCES_ADD = f'/Cooking_preference_add/{LIST}'
 COOKING_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/Cooking_preference/{LIST}'
 COOKING_PREFERENCES_NM = '/Cooking_preference'
-always_cooking = "you cook every day"
-sometimes_cooking = "you sometimes cook"
-never_cook = "you stay away from the kitchen"
 
 SHOWER_TIMES = f'/Shower_times/{LIST}'
 SHOWER_TIMES_NS = f'/{QUESTIONNAIRE_NS}/Shower_times/{LIST}'
 SHOWER_TIMES_NM = '/Shower_times'
-morning = "shower in the morning"
-midday = "shower midday"
-night = "shower at night"
 
 DATING_PREFERENCES = f'/Dating_preferences/{LIST}'
 DATING_PREFERENCES_NS = f'/{QUESTIONNAIRE_NS}/Dating_preferences/{LIST}'
@@ -158,9 +129,6 @@ USER_ALCOHOL_PREFERENCES_NS = (
     f'/User_alcohol_preferences/{LIST}'
     )
 USER_ALCOHOL_PREFERENCES_NM = '/User_alcohol_preferences'
-comfortable = "comfortable with alcohol present"
-semi_comfortable = "comfortable with alcohol but in private spaces"
-not_comfortable = "not comfortable with alcohol"
 
 USER_CONFRONTATION_STYLE = f'/User_confrontation_style/{LIST}'
 USER_CONFRONTATION_STYLE_NS = (
@@ -196,9 +164,7 @@ class UserGrades(Resource):
         """
         Returns a list of possible grades.
         """
-        return {'Title': 'UserGrades',
-                'Type': 'Data',
-                'Data': {1: freshman, 2: sophomore, 3: junior, 4: senior}}
+        return flds.ROOMMATE_FIELDS[flds.USER_GRADES]
 
 
 @questionnaire.route(DATING_PREFERENCES)
@@ -252,10 +218,7 @@ class CookPreferences(Resource):
         """
         Returns list of common cooking preferences.
         """
-        return {'Title': 'CookPreferences',
-                'Type': 'Data',
-                'Data': {1: always_cooking, 2: sometimes_cooking,
-                         3: never_cook}}
+        return flds.ROOMMATE_FIELDS[flds.USER_COOKING_PREFERENCES]
 
 
 user_quiz = quizDB.COOKING = fields.String
@@ -283,9 +246,7 @@ class UserShowerPreferences(Resource):
         """
         Returns list of possible shower times.
         """
-        return {'Title': 'UserShowerPreferences',
-                'Type': 'Data',
-                'Data': {1: morning, 2: midday, 3: night}}
+        return flds.ROOMMATE_FIELDS[flds.USER_SHOWER_TIMES]
 
 
 @questionnaire.route(USER_COMMON_BEDTIMES)
@@ -297,9 +258,7 @@ class UserCommonBedtimes(Resource):
         """
         Returns list of possible bedtimes.
         """
-        return {'Title': 'UserCommonBedtimes',
-                'Type': 'Data',
-                'Data': {1: early, 2: late, 3: very_late}}
+        return flds.ROOMMATE_FIELDS[flds.USER_BEDTIMES]
 
 
 @questionnaire.route(USER_GENDER_PREFERENCE)
@@ -311,9 +270,7 @@ class UserGenderPreference(Resource):
         """
         Returns list of gender preferences
         """
-        return {'Title': 'UserGenderPreference',
-                'Type': 'Data',
-                'Data': {1: male, 2: female, 3: any_gender}}
+        return flds.ROOMMATE_FIELDS[flds.USER_GENDER_PREFERENCES]
 
 
 @questionnaire.route(USER_GUEST_PREFERENCES)
@@ -325,9 +282,7 @@ class UserGuestPreferences(Resource):
         """
         Returns list of possible guest preferences.
         """
-        return {'Title': 'UserGuestPreferences',
-                'Type': 'Data',
-                'Data': {1: no_guests, 2: few_guests, 3: lots_of_guests}}
+        return flds.ROOMMATE_FIELDS[flds.USER_GUEST_PREFERENCES]
 
 
 @questionnaire.route(USER_CLEANING_PREFERENCES)
@@ -339,9 +294,7 @@ class UserCleaningPreferences(Resource):
         """
         Returns list of possible cleaning preferences.
         """
-        return {'Title': 'UserCleaningPreferences',
-                'Type': 'Data',
-                'Data': {1: clean_tidy, 2: clean_messy, 3: messy}}
+        return flds.ROOMMATE_FIELDS[flds.USER_CLEANING_PREFERENCES]
 
 
 @questionnaire.route(USER_SHARING_PREFERENCES)
@@ -353,9 +306,7 @@ class UserSharingPreferences(Resource):
         """
         Returns list of the three possible user sharing preferences.
         """
-        return {'Title': 'UserSharingPreferences',
-                'Type': 'Data',
-                'Data': {1: sharing, 2: no_sharing, 3: some_sharing}}
+        return flds.ROOMMATE_FIELDS[flds.USER_SHARING_PREFERENCES]
 
 
 @questionnaire.route(USER_DORM_FREQUENCY)
@@ -367,9 +318,7 @@ class UserDormFrequency(Resource):
         """
         Returns list of possible dorm frequency options.
         """
-        return {'Title': 'UserDormFrequency',
-                'Type': 'Data',
-                'Data': {1: never, 2: often, 3: always}}
+        return flds.ROOMMATE_FIELDS[flds.USER_DORM_FREQUENCY]
 
 
 @questionnaire.route(USER_ANIMAL_PREFERENCES)
@@ -381,14 +330,7 @@ class UserAnimalPreferences(Resource):
         """
         Returns list of possible animal preferences options.
         """
-        return {'Title': 'UserAnimalPreferences',
-                'Type': 'Data',
-                'Data':
-                    {
-                        1: comfortable_with_animal,
-                        2: not_comfortable_with_animal
-                    }
-                }
+        return flds.ROOMMATE_FIELDS[flds.USER_ANIMAL_PREFERENCES]
 
 
 @questionnaire.route(USER_ALCOHOL_PREFERENCES)
@@ -400,13 +342,7 @@ class UserAlcoholPreferences(Resource):
         """
         Returns list of possible alcohol preferences options.
         """
-        return {'Title': 'UserAlcoholPreferences',
-                'Type': 'Data',
-                'Data': {
-                    1: comfortable,
-                    2: semi_comfortable,
-                    3: not_comfortable}
-                }
+        return flds.ROOMMATE_FIELDS[flds.USER_ALCOHOL_PREFERENCES]
 
 
 @questionnaire.route(USER_CONFRONTATION_STYLE)
