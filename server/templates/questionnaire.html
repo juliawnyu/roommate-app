@@ -70,6 +70,13 @@
             {% endfor %}
         </select>
       <br>
+        <label for="home" class="form-label">How often are you home?</label>
+        <select type="home" name="home" class="form-control" required>
+            {% for opt in home_options %}
+            <option> {{opt}}</option>
+            {% endfor %}
+        </select>
+      <br>
 
       <input type="submit" value = "submit" />
 	</form>

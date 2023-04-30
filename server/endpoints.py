@@ -526,6 +526,7 @@ def questionnaire():
         sharing = request.form['sharing']
         shower = request.form['shower']
         alcohol = request.form['alcohol']
+        home = request.form['home']
         db_manager.add_quiz_results(
             netID,
             sleep,
@@ -535,7 +536,8 @@ def questionnaire():
             animal,
             sharing,
             shower,
-            alcohol
+            alcohol,
+            home
         )
         return redirect(url_for('results'))
 
@@ -548,6 +550,7 @@ def questionnaire():
         sharing_options_lst = clean_up_json(UserSharingPreferences().get())
         shower_options_lst = clean_up_json(UserShowerPreferences().get())
         alcohol_options_lst = clean_up_json(UserAlcoholPreferences().get())
+        home_options_lst = clean_up_json(UserDormFrequency().get())
         return render_template(
             'questionnaire.html',
             sleep_options=sleep_options_lst,
@@ -558,6 +561,7 @@ def questionnaire():
             sharing_options=sharing_options_lst,
             shower_options=shower_options_lst,
             alcohol_options=alcohol_options_lst,
+            home_options=home_options_lst,
         )
 
 

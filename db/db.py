@@ -47,7 +47,7 @@ class DB_Manager:
         self.users.insert_one(new_user)
 
     def add_quiz_results(self, netID, sleep, guests, clean, gender, animal,
-                         sharing, shower, alcohol):
+                         sharing, shower, alcohol, home):
         quiz_results = {
             'sleep': sleep,
             'guests': guests,
@@ -57,6 +57,7 @@ class DB_Manager:
             'sharing': sharing,
             'shower': shower,
             'alcohol': alcohol,
+            'home': home,
         }
 
         self.users.update_one(
