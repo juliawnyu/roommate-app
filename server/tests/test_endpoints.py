@@ -143,7 +143,7 @@ def test_get_user_sharing_preferences():
     assert isinstance(resp_json[DATA], dict)
 
 
-def test_get_user_sharing_preferenes_not_empty():
+def test_get_user_sharing_preferences_not_empty():
     """
     See if we can get user sharing preferenes list not empty.
     Return should look like:
