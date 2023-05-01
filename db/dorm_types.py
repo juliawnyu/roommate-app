@@ -2,6 +2,7 @@
 GRAMERCY = 'Gramercy'
 OTHMER = 'Othmer'
 CLARK = 'Clark'
+ALUMNI = 'Alumni'
 
 dorm_types = {
     OTHMER: {
@@ -13,6 +14,10 @@ dorm_types = {
         'type': 'freshmen'
     },
     GRAMERCY: {
+        'location': 'Manhattan',
+        'type': 'freshmen'
+    },
+    ALUMNI: {
         'location': 'Manhattan',
         'type': 'freshmen'
     }
