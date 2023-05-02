@@ -7,10 +7,12 @@
 </head>
 <body>
 <h1>Your questionnaire answers</h1>
-    {% for ans in quiz_results %}
-        <answer> {{ans}}: {{quiz_results[ans]}}</answer>
-        <br>
-    {% endfor %}
+    {% if quiz_results %}
+        {% for ans in quiz_results %}
+            <answer> {{ans}}: {{quiz_results[ans]}}</answer>
+            <br>
+        {% endfor %}
+    {% endif %}
 
 <h1>Roommate matches</h1>
 <!-- work in progress -->
