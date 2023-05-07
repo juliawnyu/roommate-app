@@ -339,5 +339,5 @@ def test_get_matched_users():
         'omk234': ['gender'],
         'bm2888': ['sleep', 'guests', 'clean', 'gender']
     }
-    matched_user_lst = ep.get_matched_user_info(matched_users)
+    matched_user_lst = ep.get_matched_users(matched_users)
     assert len(matched_user_lst) > 0
