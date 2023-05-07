@@ -34,7 +34,7 @@ class DB_Manager:
         if search:
             return search
         return False
-    
+
     def get_matched_users(self, netID):
         user_in_session = self.get_user(netID)
         return user_in_session.get('matched_users')
