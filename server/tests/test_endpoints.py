@@ -337,5 +337,5 @@ def test_clean_up_json():
             'omk234': ['gender'],
             'bm2888': ['sleep', 'guests', 'clean', 'gender']
         }
-        matched_user_lst = ep.get_matched_user_info('bm2815', matched_users)
+        matched_user_lst = ep.get_matched_user_info(matched_users)
         assert len(matched_user_lst) > 0

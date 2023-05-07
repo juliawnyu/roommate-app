@@ -511,6 +511,22 @@ def clean_up_json(resp):
     return resp_lst
 
 
+def get_matched_users(matched_users):
+    """
+    this function gets the names and emails of users 
+    with similar questionnaire answers.
+    gives back a dictionary: {'userNetID': email} or False
+    """
+    matched_users_info = {}
+    for user_netID in matched_users:
+        user_email = user_netID + '@nyu.edu'
+        matched_users_info[user_netID] = user_email
+    if matched_users_info:
+        return matched_users_info
+    else:
+        return False
+
+
 @app.route('/questionnaire', methods=['GET', 'POST'])
 def questionnaire():
     """
@@ -570,7 +586,10 @@ def results():
     """
     app route for the results page for after users take quiz
     """
-    return render_template('results.html')
+    matched_user_info = get_matched_users(
+            db_manager.get_matched_users(session['netID'])
+    )
+    return render_template('results.html', matched_user_info=matched_user_info)
 
 
 @app.route('/browse')
