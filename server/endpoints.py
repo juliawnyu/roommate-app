@@ -555,6 +555,7 @@ def questionnaire():
             alcohol,
             home
         )
+        db_manager.compare_users(netID)
         return redirect(url_for('results'))
 
     elif request.method == 'GET':
@@ -586,10 +587,10 @@ def results():
     """
     app route for the results page for after users take quiz
     """
-    matched_user_info = get_matched_users(
-            db_manager.get_matched_users(session['netID'])
-    )
-    return render_template('results.html', matched_user_info=matched_user_info)
+    # user = db_manager.get_user(session['netID'])
+    # matched_users = user.get('matched_users')
+    # matched_user_info = get_matched_users(matched_users)
+    return render_template('results.html')
 
 
 @app.route('/browse')

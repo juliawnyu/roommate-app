@@ -69,8 +69,6 @@ class DB_Manager:
             {'$set': {'quiz_results': quiz_results}}
         )
 
-        self.compare_users(netID)
-
     def add_matched_users(self, netID, matched_users):
         self.users.update_one(
             {'netID': netID},
