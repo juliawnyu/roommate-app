@@ -326,11 +326,11 @@ def test_clean_up_json():
 
 def test_get_matched_users():
     """
-    this function uses the session netID and matches 
+    this function uses the session netID and matches
     them with other users in the db.
-    returns a list of the matched users and their email 
+    returns a list of the matched users and their email
     for display purposes in frontend.
-    takes example json response and matches 
+    takes example json response and matches
     with another example json response.
     """
     matched_users = {
