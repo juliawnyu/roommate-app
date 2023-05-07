@@ -513,7 +513,7 @@ def clean_up_json(resp):
 
 def get_matched_users(matched_users):
     """
-    this function gets the names and emails of users 
+    this function gets the names and emails of users
     with similar questionnaire answers.
     gives back a dictionary: {'userNetID': email} or False
     """

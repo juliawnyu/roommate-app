@@ -324,18 +324,20 @@ def test_clean_up_json():
     assert cleaned_up_json_resp[2] == 'always'
 
 
-    def test_get_matched_users():
-        """
-        this function uses the session netID and matches them with other users in the db.
-        returns a list of the matched users and their email 
-        for display purposes in frontend.
-        takes example json response and matches with another example json response.
-        """
-        matched_users = {
-            'jw1234': ['sleep', 'guests', 'gender'],
-            'abc123': ['sleep', 'gender'],
-            'omk234': ['gender'],
-            'bm2888': ['sleep', 'guests', 'clean', 'gender']
-        }
-        matched_user_lst = ep.get_matched_user_info(matched_users)
-        assert len(matched_user_lst) > 0
+def test_get_matched_users():
+    """
+    this function uses the session netID and matches 
+    them with other users in the db.
+    returns a list of the matched users and their email 
+    for display purposes in frontend.
+    takes example json response and matches 
+    with another example json response.
+    """
+    matched_users = {
+        'jw1234': ['sleep', 'guests', 'gender'],
+        'abc123': ['sleep', 'gender'],
+        'omk234': ['gender'],
+        'bm2888': ['sleep', 'guests', 'clean', 'gender']
+    }
+    matched_user_lst = ep.get_matched_user_info(matched_users)
+    assert len(matched_user_lst) > 0
