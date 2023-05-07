@@ -7,6 +7,8 @@ import server.endpoints as ep
 TEST_CLIENT = ep.app.test_client()
 # TEST_DB = ep.db_manager
 
+TITLE = 'Title'
+TYPE = 'Type'
 DATA = 'Data'
 
 
@@ -306,9 +308,9 @@ def test_clean_up_json():
     takes an example json response from an endpoint and parses to list
     """
     json_resp = {
-        'Title': 'UserDormFrequency',
-        'Type': 'Data',
-        'Data': {
+        TITLE: 'UserDormFrequency',
+        TYPE: 'Data',
+        DATA: {
             1: 'just to sleep',
             2: 'often',
             3: 'always'
@@ -320,3 +322,20 @@ def test_clean_up_json():
     assert cleaned_up_json_resp[0] == 'just to sleep'
     assert cleaned_up_json_resp[1] == 'often'
     assert cleaned_up_json_resp[2] == 'always'
+
+
+    def test_get_matched_users():
+        """
+        this function uses the session netID and matches them with other users in the db.
+        returns a list of the matched users and their email 
+        for display purposes in frontend.
+        takes example json response and matches with another example json response.
+        """
+        matched_users = {
+            'jw1234': ['sleep', 'guests', 'gender'],
+            'abc123': ['sleep', 'gender'],
+            'omk234': ['gender'],
+            'bm2888': ['sleep', 'guests', 'clean', 'gender']
+        }
+        matched_user_lst = ep.get_matched_user_info('bm2815', matched_users)
+        assert len(matched_user_lst) > 0
