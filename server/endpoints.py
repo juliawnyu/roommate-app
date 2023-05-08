@@ -555,7 +555,7 @@ def questionnaire():
             alcohol,
             home
         )
-        #db_manager.compare_users(netID)
+        # db_manager.compare_users(netID)
         return redirect(url_for('results'))
 
     elif request.method == 'GET':
