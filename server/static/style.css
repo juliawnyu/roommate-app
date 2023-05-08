@@ -98,7 +98,7 @@ input[type=text], input[type=password], select {
 input[type=submit] {
   width: 200px;
   font-size: 20px;
-  background-color: #4CAF50;
+  background-color: #57068c;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -107,7 +107,7 @@ input[type=submit] {
   cursor: pointer;
 }
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #57068c;
 }
 div {
   border-radius: 5px;
@@ -118,7 +118,7 @@ div {
 
 
 button {
-  background-color: #4CAF50;
+  background-color: #57068c;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -141,7 +141,7 @@ table {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 thead tr {
-  background-color: #009879;
+  background-color: #57068c;
   color: #ffffff;
   text-align: left;
 }
