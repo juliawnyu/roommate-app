@@ -154,10 +154,10 @@ class HelloWorld(Resource):
         It just answers with "hello world."
         """
         return {MESSAGE: 'hello world'}
-    
+
 
 DORM_DETAILS_STR = 'Dorm Details'
-    
+
 
 @dorms.route(f'{DORMS_DETAILS}/<name>')
 class DormDetails(Resource):
@@ -173,7 +173,7 @@ class DormDetails(Resource):
         dorm_det = dorms.get_game_details(name)
         if dorm_det is None:
             raise wz.NotFound(f'{name} not found.')
-        return {DOMR_DETAILS_STR: dorm_det}
+        return {DORM_DETAILS_STR: dorm_det}
 
 
 @questionnaire.route(USER_GRADES)

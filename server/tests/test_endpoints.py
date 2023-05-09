@@ -55,7 +55,7 @@ def test_get_dorm_details(mock_get_dorm_details):
 
 
 @patch('db.dorms.get_dorm_details', return_value=None)
-def test_get_dorm_details(mock_get_dorm_details):
+def test_get_dorm_details_no_such_dorm(mock_get_dorm_details):
     resp = TEST_CLIENT.get(f'{ep.DORMS_DETAILS_W_NS}/NotADormName')
     assert resp.status_code == HTTPStatus.NOT_FOUND
 
