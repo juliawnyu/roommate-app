@@ -7,11 +7,12 @@ from flask import Flask, render_template, request,\
                     flash, redirect, url_for, session
 from flask_restx import Resource, Api, Namespace, fields
 from flask_session import Session
-
+from http import HTTPStatus
 import db.db as db
 import db.fields as flds
 import db.users as usr
 import secrets
+import werkzeug.exceptions as wz
 
 
 app = Flask(__name__)
@@ -153,6 +154,26 @@ class HelloWorld(Resource):
         It just answers with "hello world."
         """
         return {MESSAGE: 'hello world'}
+    
+
+DORM_DETAILS_STR = 'Dorm Details'
+    
+
+@dorms.route(f'{DORMS_DETAILS}/<name>')
+class DormDetails(Resource):
+    """
+    This will get details on a dorm.
+    """
+    @api.response(HTTPStatus.OK, 'Success')
+    @api.response(HTTPStatus.NOT_FOUND, 'Not Found')
+    def get(self, name):
+        """
+        Returns details about a dorm.
+        """
+        dorm_det = dorms.get_game_details(name)
+        if dorm_det is None:
+            raise wz.NotFound(f'{name} not found.')
+        return {DOMR_DETAILS_STR: dorm_det}
 
 
 @questionnaire.route(USER_GRADES)
