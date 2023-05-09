@@ -4,6 +4,8 @@ import db.users as usr
 
 import server.endpoints as ep
 
+from unittest.mock import patch
+
 TEST_CLIENT = ep.app.test_client()
 # TEST_DB = ep.db_manager
 
@@ -27,7 +29,8 @@ SAMPLE_USER = {
 }
 
 
-def test_add_user():
+@patch('db.users.user_exists', return_value=SAMPLE_USER, unsafe=True)
+def test_add_user(mock_user_exists):
     """
     Testing adding a user.
     """
