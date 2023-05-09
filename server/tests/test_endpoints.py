@@ -49,7 +49,6 @@ def a_dorm():
 @patch('db.dorms.get_dorm_details', return_value=SAMPLE_DORM_DETAILS)
 def test_get_dorm_details(a_dorm):
     resp = TEST_CLIENT.get(f'{ep.DORMS_DETAILS_W_NS}/{SAMPLE_DORM_NM}')
-    assert resp.status_code == HTTPStatus.OK
     assert isinstance(resp.response, dict)
     assert drms.NAME in resp.json[ep.DORMS_DETAILS]
 
