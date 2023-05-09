@@ -9,6 +9,7 @@ from flask_restx import Resource, Api, Namespace, fields
 from flask_session import Session
 from http import HTTPStatus
 import db.db as db
+import db.dorms as drms
 import db.fields as flds
 import db.users as usr
 import secrets
@@ -170,7 +171,7 @@ class DormDetails(Resource):
         """
         Returns details about a dorm.
         """
-        dorm_det = dorms.get_game_details(name)
+        dorm_det = drms.get_dorm_details(name)
         if dorm_det is None:
             raise wz.NotFound(f'{name} not found.')
         return {DORM_DETAILS_STR: dorm_det}
