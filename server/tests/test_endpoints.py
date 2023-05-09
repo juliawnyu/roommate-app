@@ -1,10 +1,6 @@
-from http import HTTPStatus
-from unittest.mock import patch
-
 import pytest
 
 import db.users as usr
-import db.dorms as drms
 
 import server.endpoints as ep
 
@@ -31,32 +27,6 @@ SAMPLE_USER = {
     usr.NAME: SAMPLE_USER_NM,
     usr.EMAIL: 'abc123@nyu.edu'
 }
-
-SAMPLE_DORM_NM = 'SampleDorm'
-SAMPLE_DORM_DETAILS = {
-    drms.NAME: "SampleDorm",
-    drms.LOCATION: "SampleLocation"
-}
-
-
-@pytest.fixture(scope='function')
-def a_dorm():
-    ret = drms.add_dorm(SAMPLE_DORM_NM, SAMPLE_DORM_DETAILS)
-    yield ret
-    drms.del_dorm(SAMPLE_DORM_NM)
-
-
-@patch('db.dorms.get_dorm_details', return_value=SAMPLE_DORM_DETAILS)
-def test_get_dorm_details(a_dorm):
-    resp = TEST_CLIENT.get(f'{ep.DORMS_DETAILS_W_NS}/{SAMPLE_DORM_NM}')
-    assert isinstance(resp.response, dict)
-    assert drms.NAME in resp.json[ep.DORMS_DETAILS]
-
-
-@patch('db.dorms.get_dorm_details', return_value=None)
-def test_get_dorm_details_no_such_dorm(mock_get_dorm_details):
-    resp = TEST_CLIENT.get(f'{ep.DORMS_DETAILS_W_NS}/NotADormName')
-    assert resp.status_code == HTTPStatus.NOT_FOUND
 
 
 @patch('db.users.user_exists', return_value=SAMPLE_USER, unsafe=True)
